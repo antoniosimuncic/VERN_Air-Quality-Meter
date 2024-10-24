@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="LxQYiXL1fFhTs9qu_BZH">
+    <mxGraphModel dx="1161" dy="637" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pt9hoRSjWPQ23j6Vz_vE-1" value="ESP32-S3&lt;div&gt;(N16R8)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pt9hoRSjWPQ23j6Vz_vE-2" value="Sensirion SEN54&lt;div&gt;(Temperature, Humidity, VOC,&lt;/div&gt;&lt;div&gt;PM1, PM2.5, PM4, PM10&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="280" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pt9hoRSjWPQ23j6Vz_vE-3" value="3.5&quot; LCD Display&lt;div&gt;(ILI9488, SPI)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pt9hoRSjWPQ23j6Vz_vE-4" value="&lt;div&gt;Infineon DPS368&lt;br&gt;&lt;/div&gt;(Barometric pressure sensor)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pt9hoRSjWPQ23j6Vz_vE-5" value="Sensirion SCD40&lt;div&gt;(photoacoustic CO2 sensor)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
