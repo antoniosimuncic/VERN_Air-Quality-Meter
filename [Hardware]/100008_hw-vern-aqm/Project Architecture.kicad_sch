@@ -221,6 +221,20 @@
 		)
 		(uuid "ea2adac5-d133-46b2-a7ff-14a70e2ad344")
 	)
+	(text "Page 6"
+		(exclude_from_sim no)
+		(at 236.22 140.97 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(bold yes)
+				(color 100 70 50 1)
+			)
+			(justify right bottom)
+			(href "#5")
+		)
+		(uuid "4eaebdee-9358-4b73-8a72-52ce754239bd")
+	)
 	(text "Page 4"
 		(exclude_from_sim no)
 		(at 236.22 66.04 0)
@@ -285,6 +299,46 @@
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202"
 					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 200.66 121.92)
+		(size 36.83 20.32)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 200 0 0.5020)
+		)
+		(uuid "b07303a0-99ff-4a36-a427-2598198d9d06")
+		(property "Sheetname" "SENSORS"
+			(at 200.66 120.8909 0)
+			(effects
+				(font
+					(size 1.905 1.905)
+					(bold yes)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sensors.kicad_sch"
+			(at 200.66 142.8246 0)
+			(effects
+				(font
+					(face "Arial")
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "100008_hw-vern-aqm"
+				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202"
+					(page "6")
 				)
 			)
 		)

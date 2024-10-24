@@ -651,8 +651,8 @@
       "MCU - ESP32"
     ],
     [
-      "13eb0b07-00a1-4d61-8da3-582545eb29a8",
-      "Power - Sequencing"
+      "b07303a0-99ff-4a36-a427-2598198d9d06",
+      "SENSORS"
     ],
     [
       "e7c91631-be85-488a-af7a-f2a810f3fbfe",
@@ -666,7 +666,7 @@
     "DOC_TYPE": "Fabrication",
     "PROJECT_NAME": "P0008",
     "RELEASE_DATE": "Release Date",
-    "REVIEWER": "Petar Kolar",
+    "REVIEWER": "doc. dr. sc. Petar Kolar",
     "REVISION": "10",
     "VARIANT": "Draft"
   }

@@ -1747,47 +1747,6 @@
 		(uuid "ffcd9e5c-5c93-423a-9ccc-e0af67821852")
 	)
 	(sheet
-		(at 340.36 313.69)
-		(size 35.56 5.08)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "13eb0b07-00a1-4d61-8da3-582545eb29a8")
-		(property "Sheetname" "Power - Sequencing"
-			(at 340.36 312.6609 0)
-			(effects
-				(font
-					(face "Times New Roman")
-					(size 1.905 1.905)
-					(bold yes)
-					(color 0 0 0 1)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "Power - Sequencing.kicad_sch"
-			(at 341.63 314.96 0)
-			(effects
-				(font
-					(face "Arial")
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "100008_hw-vern-aqm"
-				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c"
-					(page "6")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 299.72 302.26)
 		(size 35.56 5.08)
 		(stroke
