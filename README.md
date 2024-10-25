@@ -9,7 +9,7 @@ Nositelj kolegija: Petar Kolar
 Student: Antonio Šimunčić  
 Zagreb, Svibanj 2024.
 
-# Uvod u projekt Smart Air Quality Monitora
+# Uvod u projekt Pametnog Monitora Kvalitete Zraka
 
 Zagađenje zraka postaje sve veći ekološki i zdravstveni problem koji utječe na kvalitetu života ljudi širom svijeta. Štetne čestice i plinovi u atmosferi mogu izazvati brojne zdravstvene tegobe, a praćenje kvalitete zraka ključno je za zaštitu zdravlja i okoliša.
 
