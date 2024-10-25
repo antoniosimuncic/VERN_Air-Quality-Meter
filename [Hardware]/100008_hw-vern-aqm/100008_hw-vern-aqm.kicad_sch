@@ -663,7 +663,7 @@
 		)
 		(uuid "5216de6a-28ab-4e49-a422-9fd32d8fed67")
 	)
-	(text "Random Sheet 1"
+	(text "Connectors and Power"
 		(exclude_from_sim no)
 		(at 45.72 106.68 0)
 		(effects
@@ -1030,7 +1030,7 @@
 		)
 		(uuid "9413d17b-fd74-4a56-8014-ec2904184d8a")
 	)
-	(text "Random Sheet 2"
+	(text "MCU - ESP32"
 		(exclude_from_sim no)
 		(at 45.72 114.3 0)
 		(effects
@@ -1312,7 +1312,7 @@
 		)
 		(uuid "c52bc9e5-2c42-41e6-ae08-fabef868928a")
 	)
-	(text "Power - Sequencing"
+	(text "Sensors"
 		(exclude_from_sim no)
 		(at 45.72 121.92 0)
 		(effects

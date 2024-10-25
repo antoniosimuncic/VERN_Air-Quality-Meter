@@ -5,7 +5,7 @@
 	(uuid "ea8c4f5e-7a49-4faf-a994-dbc85ed86b0a")
 	(paper "A3")
 	(title_block
-		(title "MCU - ESP32")
+		(title "Sensors")
 		(date "Last Modified Date")
 		(rev "${REVISION}")
 		(company "${COMPANY}")
