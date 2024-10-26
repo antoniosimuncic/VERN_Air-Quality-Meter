@@ -1,4 +1,4 @@
-# P0008_VERN_Air-Quality-Meter
+# VERN_Air-Quality-Meter
 Sveučilište VERN'  
 Smjer: IoT  
 Kolegij: IOT razvojni projekt  
@@ -29,4 +29,10 @@ Zahtjevi:
 
 Nakon definiranja zahtjeva za uređaj, započeo sam s potragom odgovarajućih komponenata na platformama kao što su Mouser, TME i Aliexpress kako bih pronašao one koje najbolje odgovaraju specifikaciji. Cilj je bio odabrati pouzdane komponente koje osiguravaju visoku točnost i dugotrajnost sustava te su kompatibilne s mikrokontrolerom i njegovom programskom podrškom.
 
-Za mikrokontroler sam odabrao ESP32-S3-WROOM-1 (N16R8) zbog pristupačne cijene, dvije procesorske jezgre, velike količina ugrađene flash memorije (16MB) i ugrđenog PSRAM-a (8MB) za frame buffer kod generiranja grafičkog sučelja. Također mikrokontroler modul ima ugrađeni Wi-Fi i Bluetooth RF interface i antenu pa se s time uvelike skraćuje razvoj i smanjuje rizik da bežična komunikacija neće raditi.
+Za mikrokontroler sam odabrao ESP32-S3-WROOM-1 (N16R8) zbog pristupačne cijene, dvije procesorske jezgre, velike količina ugrađene flash memorije (16MB) i ugrđenog PSRAM-a (8MB) za frame buffer kod generiranja grafičkog sučelja. Također mikrokontroler modul ima ugrađeni Wi-Fi i Bluetooth RF interface i antenu pa se s time uvelike skraćuje razvoj i smanjuje rizik da bežična komunikacija neće raditi.  
+
+Blok dijagram sustava:  
+
+![alt text](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/VERN_Air-Quality-Monitor.drawio.png?raw=true)  
+
+# 2. tjedan - Crtanje sheme
