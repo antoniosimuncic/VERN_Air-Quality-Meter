@@ -7,7 +7,7 @@ Nositelj kolegija: doc. dr. sc. Petar Kolar
 **PAMETNI MONITOR KVALITETE ZRAKA**  
 
 Student: Antonio Šimunčić  
-Zagreb, Svibanj 2024.
+Zagreb, Listopad 2024.
 
 # Uvod u projekt Pametnog Monitora Kvalitete Zraka
 
