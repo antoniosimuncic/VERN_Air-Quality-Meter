@@ -39,4 +39,10 @@ Blok dijagram sustava:
 
 U drugom tjednu projekta započeo sam s izradom sheme u KiCad-u. Prvi zadatak je bio postaviti sve odabrane komponente u shemu, zatim detaljno pručavanje datasheet-ova odabranih komponenti kako bih mogao pravilno povezati cjeline i osigurao željenu funkcionalnost sustava. U ovoj fazi također radim na optimizaciji sheme i BOM-a (Bill of Materials) za kasniji prijelaz na dizajn PCB-a.  
 
-# 3. tjedan - Crtanje PCB-a
+# 3. tjedan - Release sheme  
+
+
+
+# 4. tjedan - Crtanje PCB-a  
+
+
