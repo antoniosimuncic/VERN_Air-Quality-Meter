@@ -42,3 +42,7 @@ U drugom tjednu projekta započeo sam s izradom sheme u KiCad-u. Prvi zadatak je
 # 3. tjedan - Release sheme  
 
 
+
+# 4. tjedan - Crtanje PCB-a  
+
+
