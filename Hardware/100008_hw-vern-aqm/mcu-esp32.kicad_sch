@@ -1476,6 +1476,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 125.73) (xy 327.66 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0400dcb6-f6b9-4694-828d-f6001b1926e7")
+	)
+	(wire
+		(pts
 			(xy 267.97 115.57) (xy 283.21 115.57)
 		)
 		(stroke
@@ -1493,6 +1503,16 @@
 			(type default)
 		)
 		(uuid "104105f5-749f-4611-b20f-ee06c3ceab46")
+	)
+	(wire
+		(pts
+			(xy 283.21 140.97) (xy 303.53 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14721d41-db06-4f7c-8883-19d520a56bc4")
 	)
 	(wire
 		(pts
@@ -1536,6 +1556,26 @@
 	)
 	(wire
 		(pts
+			(xy 283.21 154.94) (xy 303.53 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f6c6a7b-5972-4791-84b5-84648b3bdeae")
+	)
+	(wire
+		(pts
+			(xy 283.21 157.48) (xy 303.53 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e14543d-c7a0-49e9-aa6f-fdb313d0a16f")
+	)
+	(wire
+		(pts
 			(xy 208.28 76.2) (xy 208.28 74.93)
 		)
 		(stroke
@@ -1563,6 +1603,26 @@
 			(type default)
 		)
 		(uuid "411a3c0b-6363-4424-adca-40dab3bbe165")
+	)
+	(wire
+		(pts
+			(xy 283.21 133.35) (xy 303.53 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41ef3e98-d4e4-469d-859d-831f613a17ca")
+	)
+	(wire
+		(pts
+			(xy 283.21 143.51) (xy 303.53 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43232918-8d32-49bb-b65c-57a415efee6b")
 	)
 	(wire
 		(pts
@@ -1646,6 +1706,16 @@
 	)
 	(wire
 		(pts
+			(xy 307.34 123.19) (xy 327.66 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9561cb7a-9b0a-4b82-b748-d075f1436bb8")
+	)
+	(wire
+		(pts
 			(xy 264.16 92.71) (xy 279.4 92.71)
 		)
 		(stroke
@@ -1726,6 +1796,16 @@
 	)
 	(wire
 		(pts
+			(xy 283.21 146.05) (xy 303.53 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "edfefefb-e091-4c12-8148-0f1edae700b9")
+	)
+	(wire
+		(pts
 			(xy 142.24 90.17) (xy 152.4 90.17)
 		)
 		(stroke
@@ -1764,7 +1844,7 @@
 		(at 80.01 162.56 0)
 		(size 44.45 17.78)
 		(stroke
-			(width 1)
+			(width 0.8)
 			(type solid)
 			(color 255 165 0 1)
 		)
@@ -1970,6 +2050,28 @@
 		)
 		(uuid "0cf53d47-6df8-426f-89d0-fb0fd1731553")
 	)
+	(label "SPI_MOSI"
+		(at 285.75 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "126edb54-477b-4ee1-9271-ee29179b8bca")
+	)
+	(label "SPI_nCS_LCD"
+		(at 309.88 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1ba0acd0-ee46-4793-9c0b-a9864ccee5b9")
+	)
 	(label "I2C_SDL"
 		(at 281.94 115.57 180)
 		(fields_autoplaced yes)
@@ -1981,6 +2083,17 @@
 		)
 		(uuid "1ceb1419-4e98-43ab-a4cd-818c1510076f")
 	)
+	(label "LCD_RESET"
+		(at 285.75 154.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "34be344f-8e99-4bf5-b58b-50eefd38137f")
+	)
 	(label "USB_D+"
 		(at 278.13 97.79 180)
 		(fields_autoplaced yes)
@@ -1991,6 +2104,17 @@
 			(justify right bottom)
 		)
 		(uuid "35e1b201-8ee5-411f-a957-1b1c33b1afdb")
+	)
+	(label "SPI_MISO"
+		(at 285.75 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "45783aa7-63a5-42d4-9280-f32cf027be2a")
 	)
 	(label "I2C_SDA"
 		(at 281.94 113.03 180)
@@ -2014,6 +2138,17 @@
 		)
 		(uuid "7ef4904b-7be5-4198-a85a-d0f7f14cb48b")
 	)
+	(label "SPI_nCS_TOUCH"
+		(at 309.88 125.73 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "88039d0c-d539-48a5-9a0c-4e5c01d2463c")
+	)
 	(label "USB_D-"
 		(at 278.13 100.33 180)
 		(fields_autoplaced yes)
@@ -2024,6 +2159,39 @@
 			(justify right bottom)
 		)
 		(uuid "939a6b7f-7286-419c-96c6-679fb1a9d389")
+	)
+	(label "LCD_BACKLIGHT"
+		(at 285.75 157.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9ac8cb31-9d2a-4f10-b1f1-cfe01534fab3")
+	)
+	(label "LCD_DC{slash}RS"
+		(at 285.75 133.35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9b24afae-7967-41fb-842b-bcea2297961a")
+	)
+	(label "SPI_SCK"
+		(at 285.75 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3fb1383-9086-44a4-9ddd-556271762eb1")
 	)
 	(label "UART0_TX"
 		(at 278.13 90.17 180)
@@ -2057,6 +2225,28 @@
 			(justify left bottom)
 		)
 		(uuid "f7a3bed3-ecef-45e3-bfd4-ccaa846f90f3")
+	)
+	(global_label "SPI_MISO"
+		(shape output)
+		(at 303.53 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0fa8762b-f242-4a5b-a423-18f5a4174467")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 315.1633 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
 	)
 	(global_label "I2C_SCL"
 		(shape output)
@@ -2124,6 +2314,72 @@
 			)
 		)
 	)
+	(global_label "SPI_nCS_TOUCH"
+		(shape input)
+		(at 327.66 125.73 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "71a3b5d5-f486-4fe5-852f-b5234571e84b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 345.5223 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_SCK"
+		(shape input)
+		(at 303.53 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7f676b97-25eb-416e-945a-1d6c82e36198")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 314.3166 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LCD_RESET"
+		(shape input)
+		(at 303.53 154.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "861ad4f8-4bab-451d-a4d9-7381e5a95013")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 316.796 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "USB_D-"
 		(shape bidirectional)
 		(at 279.4 100.33 0)
@@ -2137,6 +2393,50 @@
 		(uuid "8ca412eb-e194-47bc-8156-fd1965a0bf4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 291.1165 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LCD_BACKLIGHT"
+		(shape input)
+		(at 303.53 157.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "903b2c73-f1a4-47e1-84a0-50dc17b11b06")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 321.1505 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_MOSI"
+		(shape input)
+		(at 303.53 143.51 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a1161e3e-a037-4b1d-9389-3bc1f37dc289")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 315.1633 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2168,6 +2468,28 @@
 			)
 		)
 	)
+	(global_label "LCD_DC{slash}RS"
+		(shape input)
+		(at 303.53 133.35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "acb2cb6a-c360-4d45-8117-5fdb99232ef3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 317.4009 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "I2C_SDA"
 		(shape bidirectional)
 		(at 283.21 113.03 0)
@@ -2181,6 +2503,28 @@
 		(uuid "d81db79f-1368-4323-818a-9ea7d7027dea")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 294.9265 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_nCS_LCD"
+		(shape input)
+		(at 327.66 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e51e4389-3ef1-425e-a3f3-a5bf8a5ac444")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 342.8613 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
