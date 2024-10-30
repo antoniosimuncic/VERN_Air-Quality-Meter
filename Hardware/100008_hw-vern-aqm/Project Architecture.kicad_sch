@@ -13,7 +13,7 @@
 	(lib_symbols)
 	(polyline
 		(pts
-			(xy 195.58 58.42) (xy 195.58 69.85)
+			(xy 243.84 55.88) (xy 243.84 44.45)
 		)
 		(stroke
 			(width 0)
@@ -23,7 +23,7 @@
 	)
 	(polyline
 		(pts
-			(xy 195.58 55.88) (xy 195.58 44.45)
+			(xy 243.84 58.42) (xy 243.84 69.85)
 		)
 		(stroke
 			(width 0)
@@ -40,6 +40,26 @@
 			(type default)
 		)
 		(uuid "5f799f7d-3b4c-429a-be80-1688600486e9")
+	)
+	(polyline
+		(pts
+			(xy 243.84 133.35) (xy 243.84 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8d37020-9d4d-4edf-83cc-0f7caf6eb636")
+	)
+	(polyline
+		(pts
+			(xy 243.84 121.92) (xy 243.84 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9f90ba6-5fad-4f9f-83b5-6bf61d28050d")
 	)
 	(polyline
 		(pts
@@ -65,9 +85,22 @@
 		(uuid 055071ba-7216-47dc-af92-e615f4e56e85)
 	)
 	(arc
-		(start 195.58 55.88)
-		(mid 195.2051 56.7751)
-		(end 194.31 57.15)
+		(start 245.13 132.06)
+		(mid 244.2349 131.6851)
+		(end 243.86 130.79)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 2e513735-90d6-45cc-8e60-125b49c9ff23)
+	)
+	(arc
+		(start 243.84 58.42)
+		(mid 244.2149 57.5249)
+		(end 245.11 57.15)
 		(stroke
 			(width 0)
 			(type default)
@@ -91,9 +124,9 @@
 		(uuid 73f6865c-4f24-4b13-a9e7-cf8bfa00ee32)
 	)
 	(arc
-		(start 194.31 57.15)
-		(mid 195.2051 57.5249)
-		(end 195.58 58.42)
+		(start 245.11 57.15)
+		(mid 244.2149 56.7751)
+		(end 243.84 55.88)
 		(stroke
 			(width 0)
 			(type default)
@@ -102,6 +135,19 @@
 			(type none)
 		)
 		(uuid a134b516-cfaf-437e-b6e0-fd4fe5086d29)
+	)
+	(arc
+		(start 243.86 142.22)
+		(mid 243.1161 144.0161)
+		(end 241.32 144.76)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid a1ef196a-304d-4651-bcf9-bd4529457914)
 	)
 	(arc
 		(start 243.86 105.39)
@@ -130,9 +176,9 @@
 		(uuid cc4cf7fb-4bd9-4be9-81d7-4f1f2d80469e)
 	)
 	(arc
-		(start 195.58 44.45)
-		(mid 196.3239 42.6539)
-		(end 198.12 41.91)
+		(start 243.84 69.85)
+		(mid 243.0961 71.6461)
+		(end 241.3 72.39)
 		(stroke
 			(width 0)
 			(type default)
@@ -143,9 +189,9 @@
 		(uuid d1fe5f0f-24cb-4f3d-baf1-1b36c0a6f68e)
 	)
 	(arc
-		(start 198.12 72.39)
-		(mid 196.3298 71.6402)
-		(end 195.58 69.85)
+		(start 241.3 41.91)
+		(mid 243.0902 42.6598)
+		(end 243.84 44.45)
 		(stroke
 			(width 0)
 			(type default)
@@ -155,10 +201,36 @@
 		)
 		(uuid d8a608aa-d710-4d73-9273-2b52adac6230)
 	)
-	(text_box "Description"
+	(arc
+		(start 241.32 119.36)
+		(mid 243.1102 120.1098)
+		(end 243.86 121.9)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid d9fc027c-0070-4afc-83e9-1999a2ab9766)
+	)
+	(arc
+		(start 243.86 133.33)
+		(mid 244.2349 132.4349)
+		(end 245.13 132.06)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid e9022a47-2c80-447f-8edf-6508112406dd)
+	)
+	(text_box "USB, Debug and Sensor connectors and Power Supply"
 		(exclude_from_sim no)
-		(at 176.53 54.61 0)
-		(size 17.145 5.08)
+		(at 246.38 54.61 0)
+		(size 33.02 12.7)
 		(stroke
 			(width -0.0001)
 			(type default)
@@ -173,7 +245,7 @@
 				(bold yes)
 				(color 0 0 0 1)
 			)
-			(justify right top)
+			(justify left top)
 		)
 		(uuid "51bc3fdc-86f1-4742-b7d8-53f1faaab343")
 	)
@@ -199,7 +271,29 @@
 		)
 		(uuid "7fa5cc40-6c97-487c-9cc7-412504f68533")
 	)
-	(text_box "Description"
+	(text_box "CO2 and Pressure Sensors"
+		(exclude_from_sim no)
+		(at 245.11 129.54 0)
+		(size 29.21 10.16)
+		(stroke
+			(width -0.0001)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+			(justify left top)
+		)
+		(uuid "902bb5df-c840-4850-bc3c-60793bd0dde5")
+	)
+	(text_box "Microcontroller"
 		(exclude_from_sim no)
 		(at 245.11 92.71 0)
 		(size 26.015 5.1)
@@ -298,7 +392,7 @@
 		(instances
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202"
-					(page "4")
+					(page "3")
 				)
 			)
 		)
@@ -338,7 +432,7 @@
 		(instances
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202"
-					(page "6")
+					(page "5")
 				)
 			)
 		)
@@ -378,7 +472,7 @@
 		(instances
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202"
-					(page "5")
+					(page "4")
 				)
 			)
 		)

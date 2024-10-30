@@ -1353,10 +1353,10 @@
 		)
 		(uuid "524c500e-48b2-4d74-9c30-5c34bf6c2558")
 	)
-	(text_box "LAYOUT NOTE:\nEnsure good coupling to ambinet air, shield from direct sunlight and decouple from external heat sources"
+	(text_box "LAYOUT NOTE:\nEnsure good coupling to ambinet air, decouple from external heat sources, shield from direct sunlight and air turbulences"
 		(exclude_from_sim no)
-		(at 214.63 148.59 0)
-		(size 39.37 11.43)
+		(at 213.36 148.59 0)
+		(size 40.64 12.7)
 		(stroke
 			(width 0.8)
 			(type solid)
@@ -1448,8 +1448,8 @@
 	)
 	(text_box "DESIGN NOTE:\nI2C address is 0x77 or 0x76 if SDO pin is pulled low."
 		(exclude_from_sim no)
-		(at 240.03 82.55 0)
-		(size 22.86 11.43)
+		(at 237.49 85.09 0)
+		(size 25.4 8.89)
 		(stroke
 			(width 0.8)
 			(type solid)
@@ -1468,7 +1468,7 @@
 		)
 		(uuid "d103a2b8-b53b-472c-8c5d-3ea63388a968")
 	)
-	(text "Flexible I/O worked examples"
+	(text "Design-in Guide SCD4x CO2 Sensor"
 		(exclude_from_sim no)
 		(at 265.43 254 0)
 		(effects
@@ -1478,7 +1478,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "https://jpieper.com/2022/06/30/flexible-i-o-worked-examples/")
+			(href "https://sensirion.com/media/documents/0D0C9129/623B1183/Sensirion_CO2_Sensors_SCD4x_design-in_guide.pdf")
 		)
 		(uuid "16842e9f-eef2-418b-80ee-4eca09c5cd4a")
 	)

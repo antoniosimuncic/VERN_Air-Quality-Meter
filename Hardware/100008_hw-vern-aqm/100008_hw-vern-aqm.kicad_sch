@@ -161,28 +161,6 @@
 		)
 		(uuid "2d015f2a-bc39-4866-bbd9-40b03d497a26")
 	)
-	(text_box "Metadata can be set in File → Schematic Setup → Project → Text Variables"
-		(exclude_from_sim no)
-		(at 8.89 300.99 0)
-		(size 119.38 6.35)
-		(stroke
-			(width -0.0001)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 2.54 2.54)
-				(thickness 0.381)
-				(bold yes)
-				(color 0 0 0 1)
-			)
-			(justify right top)
-		)
-		(uuid "4d4fc8f9-28d9-4b33-b78d-b00f0a2b33ca")
-	)
 	(text_box "DESIGN NOTE:\nExample text for informational design notes."
 		(exclude_from_sim no)
 		(at 26.67 258.445 0)
@@ -1747,47 +1725,6 @@
 		(uuid "ffcd9e5c-5c93-423a-9ccc-e0af67821852")
 	)
 	(sheet
-		(at 299.72 302.26)
-		(size 35.56 5.08)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "de68a101-7eef-4ba8-abb4-14d03adb087f")
-		(property "Sheetname" "Block Diagram"
-			(at 299.72 301.2309 0)
-			(effects
-				(font
-					(face "Times New Roman")
-					(size 1.905 1.905)
-					(bold yes)
-					(color 0 0 0 1)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "Block Diagram.kicad_sch"
-			(at 300.99 303.53 0)
-			(effects
-				(font
-					(face "Arial")
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "100008_hw-vern-aqm"
-				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c"
-					(page "2")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 340.36 302.26)
 		(size 35.56 5.08)
 		(stroke
@@ -1823,13 +1760,13 @@
 		(instances
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c"
-					(page "7")
+					(page "6")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 299.72 313.69)
+		(at 299.72 302.26)
 		(size 35.56 5.08)
 		(stroke
 			(width 0.1524)
@@ -1840,7 +1777,7 @@
 		)
 		(uuid "fede4c36-00cc-4d3d-b71c-5243ba232202")
 		(property "Sheetname" "Project Architecture"
-			(at 299.72 312.6609 0)
+			(at 299.72 301.2309 0)
 			(effects
 				(font
 					(face "Times New Roman")
@@ -1852,7 +1789,7 @@
 			)
 		)
 		(property "Sheetfile" "Project Architecture.kicad_sch"
-			(at 300.99 314.96 0)
+			(at 300.99 303.53 0)
 			(effects
 				(font
 					(face "Arial")
@@ -1864,7 +1801,7 @@
 		(instances
 			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c"
-					(page "3")
+					(page "2")
 				)
 			)
 		)
