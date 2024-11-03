@@ -2491,7 +2491,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 93.98) (xy 217.17 93.98)
+			(xy 203.2 93.98) (xy 215.9 93.98)
 		)
 		(stroke
 			(width 0)
@@ -2538,6 +2538,16 @@
 			(type default)
 		)
 		(uuid "ae53abc1-8965-4924-89b6-5f45fcd6743e")
+	)
+	(wire
+		(pts
+			(xy 210.82 153.67) (xy 231.14 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcda3e71-c154-4411-955f-1c27f3d41136")
 	)
 	(wire
 		(pts
@@ -2591,6 +2601,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 158.75) (xy 231.14 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d61ba42e-7c7a-4b49-a605-e90f3d7eea7d")
+	)
+	(wire
+		(pts
 			(xy 293.37 120.65) (xy 299.72 120.65)
 		)
 		(stroke
@@ -2608,6 +2628,26 @@
 			(type default)
 		)
 		(uuid "e2e3f084-216f-48df-9d91-7c24e6d02412")
+	)
+	(wire
+		(pts
+			(xy 210.82 151.13) (xy 231.14 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e566d03a-f9eb-44a4-a2a4-a1008db3716a")
+	)
+	(wire
+		(pts
+			(xy 210.82 156.21) (xy 231.14 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6a4e14a-f0f5-4cf3-8772-5e2e1a47bfde")
 	)
 	(wire
 		(pts
@@ -2920,7 +2960,7 @@
 		(uuid "0597c3f4-35b2-472f-86bd-823934be3c69")
 	)
 	(label "GPIO0"
-		(at 217.17 93.98 180)
+		(at 215.9 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2985,6 +3025,17 @@
 		)
 		(uuid "35e1b201-8ee5-411f-a957-1b1c33b1afdb")
 	)
+	(label "SD_SCK(CLK)"
+		(at 212.09 158.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "38eab026-9487-47d3-b284-4fe3776cedb3")
+	)
 	(label "SPI_MISO"
 		(at 212.09 127 0)
 		(fields_autoplaced yes)
@@ -3017,6 +3068,17 @@
 			(justify left bottom)
 		)
 		(uuid "7ef4904b-7be5-4198-a85a-d0f7f14cb48b")
+	)
+	(label "SD_MOSI(CMD)"
+		(at 212.09 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "85155079-cf8a-45b3-b56f-5fb4357a75c6")
 	)
 	(label "SPI_nCS_TOUCH"
 		(at 212.09 114.3 0)
@@ -3094,6 +3156,28 @@
 			(justify right bottom)
 		)
 		(uuid "ccc01ee9-e528-4a6a-9cc2-d3a49e5f11c2")
+	)
+	(label "SD_CS(D3)"
+		(at 212.09 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ccc4b862-0624-4fd1-b818-054b3a716ec5")
+	)
+	(label "SD_MISO(D0)"
+		(at 212.09 156.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "de730681-317a-4692-94e5-cc1614e1f419")
 	)
 	(label "RESET"
 		(at 81.28 78.74 0)
@@ -3194,6 +3278,28 @@
 			)
 		)
 	)
+	(global_label "SD_CS(D3)"
+		(shape bidirectional)
+		(at 231.14 151.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "326a202f-e6b5-4730-8f8d-f17bbf5c168b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 245.336 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "USB_D+"
 		(shape bidirectional)
 		(at 270.51 120.65 180)
@@ -3278,6 +3384,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SD_MISO(D0)"
+		(shape bidirectional)
+		(at 231.14 156.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7e319fca-e9a0-41f3-b027-571eec3b4146")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.4527 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -3436,6 +3564,28 @@
 			)
 		)
 	)
+	(global_label "SD_SCK(CLK)"
+		(shape bidirectional)
+		(at 231.14 158.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bf435748-96d1-4bc6-862e-d1294e842d36")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.6946 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "I2C_SDA"
 		(shape bidirectional)
 		(at 222.25 101.6 0)
@@ -3471,6 +3621,28 @@
 		(uuid "e51e4389-3ef1-425e-a3f3-a5bf8a5ac444")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 245.0713 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SD_MOSI(CMD)"
+		(shape bidirectional)
+		(at 231.14 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fac7eee1-de19-4504-898d-a97c562f95ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 248.9646 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4982,7 +5154,7 @@
 			(uuid "b36b5e39-e2fd-4b21-bb21-8030573c932f")
 		)
 		(instances
-			(project ""
+			(project "100008_hw-vern-aqm"
 				(path "/0650c7a8-acba-429c-9f8e-eec0baf0bc1c/fede4c36-00cc-4d3d-b71c-5243ba232202/e6015f1e-cbce-46f4-85e1-3d5463a17dc1"
 					(reference "U?")
 					(unit 1)
