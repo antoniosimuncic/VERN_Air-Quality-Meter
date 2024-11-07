@@ -643,7 +643,7 @@
 	)
 	(text "Connectors and Power"
 		(exclude_from_sim no)
-		(at 45.72 106.68 0)
+		(at 45.72 99.06 0)
 		(effects
 			(font
 				(face "Times New Roman")
@@ -651,7 +651,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "#4")
+			(href "#3")
 		)
 		(uuid "547bb3ec-bec4-4b68-a38e-2ac56be29bd3")
 	)
@@ -1010,7 +1010,7 @@
 	)
 	(text "MCU - ESP32"
 		(exclude_from_sim no)
-		(at 45.72 114.3 0)
+		(at 45.72 106.68 0)
 		(effects
 			(font
 				(face "Times New Roman")
@@ -1018,7 +1018,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "#5")
+			(href "#4")
 		)
 		(uuid "9413d28a-c2b4-4d73-ae2d-68b4717d1b67")
 	)
@@ -1119,6 +1119,20 @@
 			(href "#28")
 		)
 		(uuid "ad40278e-f3e6-4c25-8fa4-1f4e3918f822")
+	)
+	(text "..........................................."
+		(exclude_from_sim no)
+		(at 45.72 129.54 0)
+		(effects
+			(font
+				(face "Times New Roman")
+				(size 4 4)
+				(color 0 0 0 1)
+			)
+			(justify left bottom)
+			(href "#7")
+		)
+		(uuid "ad6b7249-41cd-4e00-872c-642d820403cb")
 	)
 	(text "22"
 		(exclude_from_sim no)
@@ -1292,7 +1306,7 @@
 	)
 	(text "Sensors"
 		(exclude_from_sim no)
-		(at 45.72 121.92 0)
+		(at 45.72 114.3 0)
 		(effects
 			(font
 				(face "Times New Roman")
@@ -1300,7 +1314,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "#6")
+			(href "#5")
 		)
 		(uuid "c787ff5d-5d58-4a12-8967-dc99673505b9")
 	)
@@ -1332,7 +1346,7 @@
 		)
 		(uuid "c932f64b-e011-46ca-8efc-bb2f186e8b13")
 	)
-	(text "Block Diagram"
+	(text "Project Architecture"
 		(exclude_from_sim no)
 		(at 45.72 91.44 0)
 		(effects
@@ -1583,20 +1597,6 @@
 		)
 		(uuid "ecd5e3bc-c1c8-4595-a242-64b07df33fd4")
 	)
-	(text "Project Architecture"
-		(exclude_from_sim no)
-		(at 45.72 99.06 0)
-		(effects
-			(font
-				(face "Times New Roman")
-				(size 4 4)
-				(color 0 0 0 1)
-			)
-			(justify left bottom)
-			(href "#3")
-		)
-		(uuid "ed9f4e44-7881-47b3-83af-17eb3de0e161")
-	)
 	(text "CHECKED - There shouldn't be any mistakes. Contact the engineer if you find any."
 		(exclude_from_sim no)
 		(at 222.25 210.82 0)
@@ -1698,7 +1698,7 @@
 	)
 	(text "Revision History"
 		(exclude_from_sim no)
-		(at 45.72 129.54 0)
+		(at 45.72 121.92 0)
 		(effects
 			(font
 				(face "Times New Roman")
@@ -1706,7 +1706,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "#7")
+			(href "#6")
 		)
 		(uuid "ff95cd70-408a-4656-b808-dabd546affbd")
 	)
