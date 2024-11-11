@@ -2620,7 +2620,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 86.36) (xy 203.2 86.36)
+			(xy 195.58 86.36) (xy 209.55 86.36)
 		)
 		(stroke
 			(width 0)
@@ -2960,7 +2960,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 86.36) (xy 177.8 86.36)
+			(xy 187.96 86.36) (xy 177.8 86.36)
 		)
 		(stroke
 			(width 0)
@@ -3500,7 +3500,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 88.9) (xy 203.2 88.9)
+			(xy 195.58 88.9) (xy 209.55 88.9)
 		)
 		(stroke
 			(width 0)
@@ -3680,7 +3680,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 88.9) (xy 177.8 88.9)
+			(xy 187.96 88.9) (xy 177.8 88.9)
 		)
 		(stroke
 			(width 0)
@@ -4035,7 +4035,7 @@
 		)
 		(uuid "1259bbda-2567-4395-9119-77c3b7ec6f4a")
 	)
-	(text "Flexible I/O worked examples"
+	(text "ESP32-S3 Datasheet"
 		(exclude_from_sim no)
 		(at 265.43 254 0)
 		(effects
@@ -4045,7 +4045,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "https://jpieper.com/2022/06/30/flexible-i-o-worked-examples/")
+			(href "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf")
 		)
 		(uuid "16842e9f-eef2-418b-80ee-4eca09c5cd4a")
 	)
@@ -4086,7 +4086,7 @@
 		)
 		(uuid "d253c2fc-3f62-4522-9752-92e0afb28602")
 	)
-	(text "Flexible I/O source configuration"
+	(text "ESP32-S3 Technical Reference Manual"
 		(exclude_from_sim no)
 		(at 265.43 256.54 0)
 		(effects
@@ -4096,7 +4096,7 @@
 				(color 0 0 0 1)
 			)
 			(justify left bottom)
-			(href "https://jpieper.com/2022/06/28/flexible-i-o-source-configuration/")
+			(href "https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf#spi")
 		)
 		(uuid "ff128f57-01dd-404e-9bb2-8208299d438c")
 	)
@@ -4189,7 +4189,7 @@
 		(uuid "46f2ad08-2b98-4e73-a38f-932da12ba4b9")
 	)
 	(label "USB_D+"
-		(at 194.31 86.36 0)
+		(at 200.66 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4231,6 +4231,28 @@
 			(justify left bottom)
 		)
 		(uuid "660585ba-3baf-4e0d-afa1-c32314b2234c")
+	)
+	(label "D-"
+		(at 180.34 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "688226e7-9d60-438e-8536-6850009e3d13")
+	)
+	(label "D+"
+		(at 180.34 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d3070a0-5660-4ccb-b331-3c0c4ccc43c1")
 	)
 	(label "SD_MOSI(CMD)"
 		(at 180.34 127 0)
@@ -4376,7 +4398,7 @@
 		(uuid "c140cb3e-b8c0-4468-8080-a67fb9f87f11")
 	)
 	(label "USB_D-"
-		(at 194.31 88.9 0)
+		(at 200.66 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4872,7 +4894,7 @@
 	)
 	(global_label "USB_D+"
 		(shape bidirectional)
-		(at 203.2 86.36 0)
+		(at 209.55 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4882,7 +4904,7 @@
 		)
 		(uuid "872cc058-fea9-422d-8bfa-f5e154e15a44")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 213.8052 86.36 0)
+			(at 220.1552 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4982,7 +5004,7 @@
 	)
 	(global_label "USB_D-"
 		(shape bidirectional)
-		(at 203.2 88.9 0)
+		(at 209.55 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4992,7 +5014,7 @@
 		)
 		(uuid "d6b1bf34-3632-4b88-b1f2-d78da359070e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 214.9165 88.9 0)
+			(at 221.2665 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6173,7 +6195,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 185.42 88.9 270)
+		(at 191.77 88.9 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6182,7 +6204,7 @@
 		(dnp yes)
 		(uuid "415c6b78-250c-4940-aea4-74425899605d")
 		(property "Reference" "R6"
-			(at 180.34 87.63 90)
+			(at 186.69 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6190,7 +6212,7 @@
 			)
 		)
 		(property "Value" "0R0"
-			(at 190.5 87.63 90)
+			(at 196.85 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6198,7 +6220,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 185.42 90.678 90)
+			(at 191.77 90.678 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6207,7 +6229,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 185.42 88.9 0)
+			(at 191.77 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6216,7 +6238,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 185.42 88.9 0)
+			(at 191.77 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8305,7 +8327,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 185.42 86.36 270)
+		(at 191.77 86.36 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8314,7 +8336,7 @@
 		(dnp yes)
 		(uuid "d99c984f-b766-4802-8ce8-4c913ef84944")
 		(property "Reference" "R5"
-			(at 180.34 85.09 90)
+			(at 186.69 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8322,7 +8344,7 @@
 			)
 		)
 		(property "Value" "0R0"
-			(at 190.5 85.09 90)
+			(at 196.85 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8330,7 +8352,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 185.42 88.138 90)
+			(at 191.77 88.138 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8339,7 +8361,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 185.42 86.36 0)
+			(at 191.77 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8348,7 +8370,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 185.42 86.36 0)
+			(at 191.77 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)

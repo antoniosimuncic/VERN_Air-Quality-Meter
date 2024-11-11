@@ -6209,20 +6209,6 @@
 		)
 		(uuid "77246f9a-4932-4947-95ca-e1d5fcffcf73")
 	)
-	(text "J. Pieper ADC investigation"
-		(exclude_from_sim no)
-		(at 266.7 259.08 0)
-		(effects
-			(font
-				(face "Arial")
-				(size 1.27 1.27)
-				(color 0 0 0 1)
-			)
-			(justify left bottom)
-			(href "https://jpieper.com/2023/07/24/stm32g4-adc-performance-part-2/")
-		)
-		(uuid "9b3ecc35-3df2-428b-a29e-c6c2c744422e")
-	)
 	(text "UART Programming header"
 		(exclude_from_sim no)
 		(at 139.7 165.1 0)
@@ -6266,34 +6252,6 @@
 			(justify left bottom)
 		)
 		(uuid "deaae301-2452-491c-8259-1428fc0840f0")
-	)
-	(text "STM32G474 Datasheet p.81"
-		(exclude_from_sim no)
-		(at 266.7 255.27 0)
-		(effects
-			(font
-				(face "Arial")
-				(size 1.27 1.27)
-				(color 0 0 0 1)
-			)
-			(justify left bottom)
-			(href "https://www.st.com/resource/en/datasheet/stm32g474cb.pdf")
-		)
-		(uuid "e6fea1fe-2cf8-4a39-929e-14f4aedafb02")
-	)
-	(text "AN5346"
-		(exclude_from_sim no)
-		(at 266.7 251.46 0)
-		(effects
-			(font
-				(face "Arial")
-				(size 1.27 1.27)
-				(color 0 0 0 1)
-			)
-			(justify left bottom)
-			(href "https://www.st.com/resource/en/application_note/an5346-stm32g4-adc-use-tips-and-recommendations-stmicroelectronics.pdf")
-		)
-		(uuid "f25578fd-4ab6-4599-95bc-eaa8a509f479")
 	)
 	(label "USB_D+"
 		(at 127 80.01 0)
