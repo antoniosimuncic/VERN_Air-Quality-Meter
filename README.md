@@ -1,48 +1,53 @@
 # VERN_Air-Quality-Meter
-Sveučilište VERN'  
+VERN' University
 Smjer: IoT  
-Kolegij: IOT razvojni projekt  
-Nositelj kolegija: doc. dr. sc. Petar Kolar  
+Course: IoT product development  
+Course professor: doc. dr. sc. Petar Kolar  
 
-**PAMETNI MONITOR KVALITETE ZRAKA**  
+**Smart air quality meter**  
 
 Student: Antonio Šimunčić  
-Zagreb, Listopad 2024.
+Zagreb, Croatia November 2024.
 
-# Uvod u projekt Pametnog Monitora Kvalitete Zraka
+# Introduction to the Smart Air Quality Monitor Project
 
-Zagađenje zraka postaje sve veći ekološki i zdravstveni problem koji utječe na kvalitetu života ljudi širom svijeta. Štetne čestice i plinovi u atmosferi mogu izazvati brojne zdravstvene tegobe, a praćenje kvalitete zraka ključno je za zaštitu zdravlja i okoliša.
+Air pollution is becoming an increasingly serious environmental and health issue, affecting the quality of life for people worldwide. Harmful particles and gases in the atmosphere can lead to numerous health problems, making air quality monitoring essential for protecting both health and the environment.
 
-Cilj ovog projekta je razviti **Smart Air Quality Monitor**, pametnu meteorološku stanicu koja integrira napredne senzore za mjerenje čestica prašine u zraku, CO2, vlage, tlaka i temperature. Ovaj uređaj bi omogućio praćenje kvalitete zraka u realnom vremenu, pružajući korisnicima važne informacije koje im pomažu da donesu informirane odluke i poduzmu potrebne mjere zaštite.
+The goal of this project is to develop a Smart Air Quality Monitor, a smart meteorological station that integrates advanced sensors to measure airborne dust particles, CO2, humidity, pressure, and temperature. This device would enable real-time air quality monitoring, providing users with critical information to help them make informed decisions and take necessary precautions.
 
-# 1. tjedan - Arhitektira sustava
+# Week 1 - System architecture
 
-Zahtjevi:
-- Mjerenje temperature i vlage
-- Mjerenje čestica prašine (PM1, PM2.5, PM4, PM10)
-- Mjerenje VOC index-a (Volatile Organic Compounds)
-- Mjerenje količine CO2 u zraku
-- Mjerenje atmosferskog tlaka
-- Prikaz podataka prema korisniku
-- Bežično povezivanje na mrežu
+Project Requirements:  
+
+- **Temperature and Humidity Measurement**
+- **Dust Particle Measurement** (PM1, PM2.5, PM4, PM10)
+- **VOC Index Measurement** (Volatile Organic Compounds)
+- **CO2 Level Measurement** in the Air
+- **Atmospheric Pressure Measurement**
+- **User Data Display**
+- **Wireless Network Connectivity**
 
 
-Nakon definiranja zahtjeva za uređaj, započeo sam s potragom odgovarajućih komponenata na platformama kao što su Mouser, TME i Aliexpress kako bih pronašao one koje najbolje odgovaraju specifikaciji. Cilj je bio odabrati pouzdane komponente koje osiguravaju visoku točnost i dugotrajnost sustava te su kompatibilne s mikrokontrolerom i njegovom programskom podrškom.
+After defining the device requirements, I began searching for suitable components on platforms like Mouser, TME, and Aliexpress to find those that best match the specifications. The goal was to select reliable components that ensure high accuracy and longevity of the system, while also being compatible with the microcontroller and its software support.
 
-Za mikrokontroler sam odabrao ESP32-S3-WROOM-1 (N16R8) zbog pristupačne cijene, dvije procesorske jezgre, velike količina ugrađene flash memorije (16MB) i ugrđenog PSRAM-a (8MB) za frame buffer kod generiranja grafičkog sučelja. Također mikrokontroler modul ima ugrađeni Wi-Fi i Bluetooth RF interface i antenu pa se s time uvelike skraćuje razvoj i smanjuje rizik da bežična komunikacija neće raditi.  
+For the microcontroller, I chose the ESP32-S3-WROOM-1 (N16R8) due to its affordable price, dual-core processor, ample onboard flash memory (16MB), and integrated PSRAM (8MB), which serves as a frame buffer for generating the graphical interface. Additionally, the microcontroller module includes built-in Wi-Fi and Bluetooth RF interfaces and an antenna, which significantly shortens development time and reduces the risk of wireless communication issues. 
 
-Blok dijagram sustava:  
+Block diagram:  
 
 ![alt text](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/VERN_Air-Quality-Monitor.drawio.png?raw=true)  
 
-# 2. tjedan - Crtanje sheme  
+# Week 2 - Schematic drawing
 
-U drugom tjednu projekta započeo sam s izradom sheme u KiCad-u. Prvi zadatak je bio postaviti sve odabrane komponente u shemu, zatim detaljno pručavanje datasheet-ova odabranih komponenti kako bih mogao pravilno povezati cjeline i osigurao željenu funkcionalnost sustava. U ovoj fazi također radim na optimizaciji sheme i BOM-a (Bill of Materials) za kasniji prijelaz na dizajn PCB-a.  
+In the second week of the project, I began creating the schematic in KiCad. The first task was to place all the selected components in the schematic, followed by a detailed study of the datasheets for the chosen components to ensure correct connections and desired system functionality. At this stage, I am also working on optimizing the schematic and the Bill of Materials (BOM) for a smooth transition to PCB design later on.
 
-# 3. tjedan - Release sheme  
+# Week 3 - Schematic release
+
+In the third week of the project, I completed the schematic design and released the finalized version. This involved thoroughly verifying all component connections and ensuring compatibility across the system, focusing on power distribution, signal integrity, and communication pathways between components. After careful checks, I created a preliminary Bill of Materials (BOM) and added detailed annotations to the schematic to guide the upcoming PCB layout phase. The release of the schematic marks a significant milestone, setting the foundation for the PCB design and allowing for initial testing.
+
+[Schematic Revision 10](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Schematic/100008_hw-vern-aqm.pdf)
 
 
 
-# 4. tjedan - Crtanje PCB-a  
+# Week 4 - PCB design  
 
 
