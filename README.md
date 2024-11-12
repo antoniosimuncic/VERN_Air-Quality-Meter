@@ -51,8 +51,23 @@ In the third week of the project, I completed the schematic design and released 
 
 In the fourth week of the project, I began designing the PCB based on the finalized schematic. This phase involved selecting the appropriate board dimensions, component placement, and routing the connections while considering design rules such as trace width, clearance, and power and heat management. A key focus was on USB differential pair impedance control, ensuring that the USB signal traces were routed with the correct 90Ω differential impedance to maintain signal integrity and reliable data transfer. I also worked on optimizing the layout for signal integrity, minimizing the length of high-speed signal traces, and ensuring proper reference planes and return paths for the components. After completing the layout and routing, I performed a Design Rule Check (DRC) to identify and correct any potential issues before moving on to generating the Gerber files for fabrication.
 
-[PCB Revision 10](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/????)
+[PCB Revision 10](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/????)  
+
+![alt text](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Images/top-side-view.png)  
 
 # Week 5 - Component procurement  
 
-In the fifth week of the project, I
+In the fifth week of the project, I focused on component procurement and ordering essential parts to prepare for assembly. I purchased components from Mouser to ensure reliability for critical parts, while sourcing additional items from Aliexpress for cost-effectiveness. Additionally, I ordered the PCBs and a stencil for solder application from JLCPCB. With components and PCBs on the way, the project is set to progress smoothly into the assembly phase once all parts arrive.
+
+[Bill of Materials](https://html-preview.github.io/?url=https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Manufacturing/Assembly/ibom/ibom.html)  
+
+[Project expense report](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/project-expense-report.md)  
+
+# Week 6 - PCB Assembly  - TODO
+
+In the sixth week of the project, I began assembling the PCB as the components and boards had arrived. Using the stencil from JLCPCB, I applied solder paste to the pads, ensuring accurate placement of the components. I then placed each component onto the board carefully, paying special attention to orientation and alignment. After assembling the board, I placed the board on an SMD hotplate reflow soldering station to perform the reflow soldering process. After the board cooled down, I inspected the connections to ensure the soldering process finished successfully. With the PCB assembly now complete, I began the first board power-up to do the initial testing and troubleshooting.  
+
+# Week 7 - Initial firmware testing  - TODO
+
+
+
