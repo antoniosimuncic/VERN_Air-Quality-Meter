@@ -7,7 +7,8 @@ Course professor: doc. dr. sc. Petar Kolar
 **Smart air quality meter**  
 
 Student: Antonio Šimunčić  
-Zagreb, Croatia November 2024.
+November 2024  
+Zagreb, Croatia 
 
 # Introduction to the Smart Air Quality Monitor Project
 
