@@ -1,18 +1,17 @@
 # VERN' University  
 Internet of Things Department  
+Professor: doc. dr. sc. Petar Kolar  
 Student: Antonio Šimunčić  
-Course professor: doc. dr. sc. Petar Kolar  
 
-**Smart air quality meter**  
+**Smart air quality monitor**  
 
- 
-
+Zagreb, Croatia  
 November, 2024  
-Zagreb, Croatia 
+
 
 # Introduction to the Smart Air Quality Monitor Project
 
-Air pollution is becoming an increasingly serious environmental and health issue, affecting the quality of life for people worldwide. Harmful particles and gases in the atmosphere can lead to numerous health problems, making air quality monitoring essential for protecting both health and the environment.
+Air pollution is becoming an increasingly serious environmental and health issue, affecting people's quality of life worldwide. Harmful particles and gases in the atmosphere can lead to numerous health problems, making air quality monitoring essential for protecting health and the environment.
 
 The goal of this project is to develop a Smart Air Quality Monitor, a smart meteorological station that integrates advanced sensors to measure airborne dust particles, CO2, humidity, pressure, and temperature. This device would enable real-time air quality monitoring, providing users with critical information to help them make informed decisions and take necessary precautions.
 
@@ -45,7 +44,7 @@ In the second week of the project, I began creating the schematic in KiCad. The 
 
 In the third week of the project, I completed the schematic design and released the finalized version. This involved thoroughly verifying all component connections and ensuring compatibility across the system, focusing on power distribution, signal integrity, and communication pathways between components. After careful checks, I created a preliminary Bill of Materials (BOM) and added detailed annotations to the schematic to guide the upcoming PCB layout phase. The release of the schematic marks a significant milestone, setting the foundation for the PCB design and allowing for initial testing.
 
-[Schematic Revision 10](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Schematic/100008_hw-vern-aqm.pdf)
+**Schematic:** [Revision 10](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Schematic/100008_hw-vern-aqm.pdf)
 
 # Week 4 - PCB design
 
