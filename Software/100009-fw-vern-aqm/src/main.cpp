@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include <Dps3xx.h>
 #include <SensirionI2CScd4x.h>
 #include <SensirionI2CSen5x.h>
 
@@ -12,7 +13,8 @@
 
 // configuration
 #define BAUD_RATE 115200
-#define TEMP_OFFSET 0.0
+#define SEN5X_TEMP_OFFSET 0.0
+#define DPS368_OVERSAMPLING 7
 
 // pin declaration
 #define SDA_PIN  21
@@ -24,20 +26,22 @@ float massConcentrationPm1p0;
 float massConcentrationPm2p5;
 float massConcentrationPm4p0;
 float massConcentrationPm10p0;
-float ambientHumidity;
-float ambientTemperature;
+float sen5xHumidity;
+float sen5xTemperature;
 float vocIndex;
 float noxIndex;
 // SCD4x
 uint16_t co2 = 0;
-float temperature = 0.0f;
-float humidity = 0.0f;
+float scd4xTemperature = 0.0f;
+float scd4xHumidity = 0.0f;
 // DPS368
-
+float dps368Pressure = 0.0f;
+float dps368Temperature = 0.0f;
 
 // creating sensor instances
 SensirionI2CScd4x scd4x;
 SensirionI2CSen5x sen5x;
+Dps3xx dps368 = Dps3xx();
 
 // serial print a 16-bit unsigned integer in 4 digit HEX format by adding leading zeros
 void printUint16Hex(uint16_t value) {
@@ -146,10 +150,12 @@ void setup() {
     }
 
     Wire.begin(SDA_PIN, SCL_PIN);
-    scd4x.begin(Wire);
-    sen5x.begin(Wire);
-    delay(50);
 
+    scd4x.begin(Wire);  // default 0x62 I2C address
+    sen5x.begin(Wire);  // default 0x69 I2C address
+    dps368.begin(Wire); // default 0x76 I2C address
+
+    delay(100);
     Serial.println("Booting...");
 
     // SCD4x Initialization
@@ -181,20 +187,20 @@ void setup() {
         // add ambient pressure sensor
     #endif
 
-    #ifdef TEMP_OFFSET
+    #ifdef SEN5X_TEMP_OFFSET
         // set temperature offset for SEN5x
-        sen5xError = sen5x.setTemperatureOffsetSimple(TEMP_OFFSET);
+        sen5xError = sen5x.setTemperatureOffsetSimple(SEN5X_TEMP_OFFSET);
         if (sen5xError) {
             Serial.print("SEN5x Error trying to execute setTemperatureOffsetSimple(): ");
             errorToString(sen5xError, sen5xErrorMessage, 256);
             Serial.println(sen5xErrorMessage);
         } else {
             Serial.print("SEN5x Temperature Offset set to ");
-            Serial.print(TEMP_OFFSET);
+            Serial.print(SEN5X_TEMP_OFFSET);
             Serial.println(" °C (SEN54/SEN55 only)");
         }
     #endif
-
+    
     // start SCD4x Measurement
     scd4xError = scd4x.startPeriodicMeasurement();
     if (scd4xError) {
@@ -211,15 +217,14 @@ void setup() {
         Serial.println(sen5xErrorMessage);
     }
 
-    // add ambient pressure sensor
-
+    // add more sensor initializations here
 
     Serial.println("Waiting for first measurement... (5 sec)");
 }
 
 void loop() {
 
-    //SCD4x
+    // SCD4x
     uint16_t scd4xError;
     char scd4xErrorMessage[256];
 
@@ -236,8 +241,10 @@ void loop() {
         return;
     }
 
+    Serial.println("-----------------------");
+    Serial.println("SCD4x Measurements:");
     // read and serial print SCD4x measurements
-    scd4xError = scd4x.readMeasurement(co2, temperature, humidity);
+    scd4xError = scd4x.readMeasurement(co2, scd4xTemperature, scd4xHumidity);
     if (scd4xError) {
         Serial.print("Error trying to execute readMeasurement(): ");
         errorToString(scd4xError, scd4xErrorMessage, 256);
@@ -245,14 +252,15 @@ void loop() {
     } else if (co2 == 0) {
         Serial.println("Invalid sample detected, skipping.");
     } else {
-        Serial.println("-----------------------");
-        Serial.println("SCD4x Measurements:");
         Serial.print("CO₂: "); Serial.print(co2); Serial.println(" ppm");
-        Serial.print("Temperature: "); Serial.print(temperature); Serial.println(" °C");
-        Serial.print("Humidity: "); Serial.print(humidity); Serial.println(" %");
+        Serial.print("Temperature: "); Serial.print(scd4xTemperature); Serial.println(" °C");
+        Serial.print("Humidity: "); Serial.print(scd4xHumidity); Serial.println(" %");
     }
 
     // SEN5x
+    Serial.println("-----------------------");
+    Serial.println("SEN5x Measurements:");
+
     uint16_t sen5xError;
     char sen5xErrorMessage[256];
 
@@ -262,8 +270,8 @@ void loop() {
         massConcentrationPm2p5,
         massConcentrationPm4p0,
         massConcentrationPm10p0,
-        ambientHumidity, 
-        ambientTemperature, 
+        sen5xHumidity, 
+        sen5xTemperature, 
         vocIndex,
         noxIndex);
 
@@ -272,25 +280,23 @@ void loop() {
         errorToString(sen5xError, sen5xErrorMessage, 256);
         Serial.println(sen5xErrorMessage);
     } else {
-        Serial.println("-----------------------");
-        Serial.println("SEN5x Measurements:");
         Serial.print("PM 1.0: "); Serial.print(massConcentrationPm1p0); Serial.println(" µg/m³");
         Serial.print("PM 2.5: "); Serial.print(massConcentrationPm2p5); Serial.println(" µg/m³");
         Serial.print("PM 4.0: "); Serial.print(massConcentrationPm4p0); Serial.println(" µg/m³");
         Serial.print("PM 10: "); Serial.print(massConcentrationPm10p0); Serial.println(" µg/m³");
 
         Serial.print("Temperature: ");
-        if (isnan(ambientTemperature)) {
+        if (isnan(sen5xTemperature)) {
             Serial.println("n/a");
         } else {
-            Serial.print(ambientTemperature); Serial.println(" °C");
+            Serial.print(sen5xTemperature); Serial.println(" °C");
         }
 
         Serial.print("Humidity: ");
-        if (isnan(ambientHumidity)) {
+        if (isnan(sen5xHumidity)) {
             Serial.println("n/a");
         } else {
-            Serial.print(ambientHumidity); Serial.println(" %");
+            Serial.print(sen5xHumidity); Serial.println(" %");
         }
 
         Serial.print("VocIndex: ");
@@ -307,6 +313,29 @@ void loop() {
             Serial.println(noxIndex);
         }
     }
+
+    // DPS368
+    Serial.println("-----------------------");
+    Serial.println("DPS368 Measurements:");
+
+    int16_t dps368Error;
+
+    dps368Error = dps368.measureTempOnce(dps368Temperature, DPS368_OVERSAMPLING);
+    if (dps368Error) {
+        Serial.print("DPS368 Error trying to execute measureTempOnce(): "); 
+        Serial.println(dps368Error);
+    } else {
+        Serial.print("Temperature: "); Serial.print(dps368Temperature); Serial.println(" °C");
+    }
+
+    dps368Error = dps368.measurePressureOnce(dps368Pressure, DPS368_OVERSAMPLING);
+    if (dps368Error) {
+        Serial.print("DPS368 Error trying to execute measurePressureOnce(): ");
+        Serial.println(dps368Error);
+    } else {
+        Serial.print("Pressure: "); Serial.print(dps368Pressure/100); Serial.println(" hPa"); 
+    }
+
 
     delay(5000);
 }
