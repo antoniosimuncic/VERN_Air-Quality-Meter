@@ -66,6 +66,8 @@ In the fifth week of the project, I focused on component procurement and orderin
 
 In the sixth week of the project, I began assembling the PCB as the components and boards had arrived. Using the stencil from JLCPCB, I applied solder paste to the pads, and then I carefully placed each component onto the board, paying special attention to orientation and alignment. After assembling the board, I placed the board on an SMD hotplate reflow soldering station to perform the reflow soldering process. After the board cooled down, I inspected the connections to ensure the soldering process finished successfully. With the PCB assembly complete, I began the first board power-up to do the initial testing and troubleshooting.  
 
+**Production process:**  
+
 ![Photo of the production process](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/production-process.jpg)  
 
 # Week 7 - Board Bring-Up  
@@ -77,6 +79,8 @@ In the seventh week of the project, I focused on the initial bring-up of the PCB
 # Week 8 - Case design  
 
 In the eighth week of the project, I focused on designing a custom 3D-printed case for the device after I had confirmed the board functioned as expected. The design accounted for component placement, ventilation, and accessibility for ports and connectors. Aesthetics and durability were considered to ensure the case complemented the functionality and appearance of the project. This step helped prepare the device for practical use and testing in real-world conditions. The 3D print was made using PET-G on the BambuLab P1S printer.  
+
+**Case design:**  
 
 ![Photo of the case design](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/case-design.jpg)  
 
