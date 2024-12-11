@@ -76,7 +76,7 @@ In the seventh week of the project, I focused on the initial bring-up of the PCB
 
 # Week 8 - Case design  
 
-In the eighth week of the project, I focused on designing a custom 3D-printed case for the device after I had confirmed the board functioned as expected. The design accounted for component placement, ventilation, and accessibility for ports and connectors. Aesthetics and durability were considered to ensure the case complemented the functionality and appearance of the project. This step helped prepare the device for practical use and testing in real-world conditions.  
+In the eighth week of the project, I focused on designing a custom 3D-printed case for the device after I had confirmed the board functioned as expected. The design accounted for component placement, ventilation, and accessibility for ports and connectors. Aesthetics and durability were considered to ensure the case complemented the functionality and appearance of the project. This step helped prepare the device for practical use and testing in real-world conditions. The 3D print was made using PET-G on the BambuLab P1S printer.  
 
 ![Photo of the case design](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/case-design.jpg)  
 
