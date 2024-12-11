@@ -34,7 +34,7 @@ For the microcontroller, I chose the ESP32-S3-WROOM-1 (N16R8) due to its afforda
 
 **Block diagram:**  
 
-![alt text](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/VERN_Air-Quality-Monitor-ENG-wb.png)  
+![Block diagram photo](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/VERN_Air-Quality-Monitor-ENG-wb.png)  
 
 # Week 2 - Schematic drawing
 
@@ -52,7 +52,7 @@ In the fourth week of the project, I began designing the PCB based on the finali
 
 **PCB render:**  
 
-![alt text](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Images/top-side-view.png)  
+![PCB render photo](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Hardware/100008_hw-vern-aqm/Images/top-side-view.png)  
 
 # Week 5 - Component procurement  
 
@@ -62,13 +62,17 @@ In the fifth week of the project, I focused on component procurement and orderin
 
 [Project expense report](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/project-expense-report.md)  
 
-# Week 6 - PCB Assembly  - TODO
+# Week 6 - PCB Assembly  
 
 In the sixth week of the project, I began assembling the PCB as the components and boards had arrived. Using the stencil from JLCPCB, I applied solder paste to the pads, ensuring accurate placement of the components. I then carefully placed each component onto the board, paying special attention to orientation and alignment. After assembling the board, I placed the board on an SMD hotplate reflow soldering station to perform the reflow soldering process. After the board cooled down, I inspected the connections to ensure the soldering process finished successfully. With the PCB assembly complete, I began the first board power-up to do the initial testing and troubleshooting.  
 
-# Week 7 - Initial firmware testing  - TODO  
+![Photo of the production process](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/production-process.jpg)  
 
-In the seventh week of the project, 
+# Week 7 - Board Bring-Up  
+
+In the seventh week of the project, I focused on the initial bring-up of the PCB. After assembling the board, I verified the power rails and ensured all components received the correct voltages. Basic functionality, including communication interfaces such as UART and I2C, was tested to confirm proper connectivity between the microcontroller and peripherals. Rigol DS1054z oscilloscope was used to identify and resolve minor issues on the UART lines. Soldering fixes were necessary to ensure the board operated as expected. This stage established a solid foundation for further firmware development and system testing.  
+
+**Sensor test code:** [sensors-bring-up.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/sensors-bring-up.cpp)  
 
 # Week 8 - Case design - TODO
 
