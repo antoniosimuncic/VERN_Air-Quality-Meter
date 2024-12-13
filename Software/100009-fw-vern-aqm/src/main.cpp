@@ -275,7 +275,7 @@ void loop() {
         Serial.print("Temperature: "); Serial.print(scd4xTemperature); Serial.println(" °C");
         Serial.print("Humidity: "); Serial.print(scd4xHumidity); Serial.println(" %");
     }
-
+sen5x.
     // SEN5x
     // Read and serial print SEN5x measurements
     Serial.println("-----------------------");
