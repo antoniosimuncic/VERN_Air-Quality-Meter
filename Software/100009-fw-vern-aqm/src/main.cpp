@@ -1,4 +1,3 @@
-
 #include <Arduino.h>
 #include <Wire.h>
 #include <TFT_eSPI.h>
@@ -7,74 +6,18 @@
 #include <SensirionI2CSen5x.h>
 #include <SensirionI2cSht4x.h>
 
-#define MAXBUF_REQUIREMENT 48 // The used commands use up to 48 bytes.
-#if (defined(I2C_BUFFER_LENGTH) && (I2C_BUFFER_LENGTH >= MAXBUF_REQUIREMENT)) || \
-    (defined(BUFFER_LENGTH) && BUFFER_LENGTH >= MAXBUF_REQUIREMENT)
-#define USE_PRODUCT_INFO
-#endif
-// SHT4x error define
-#ifdef NO_ERROR
-#undef NO_ERROR
-#endif
-#define NO_ERROR 0
+#include "secrets.h" // Secret credentials
+#include "config.h"  // General configuration
 
-// Wi-Fi credentials
-const char* ssid = "ALHN-2B78";
-const char* password = "DPgWqUGMw7";
-
-// configuration
-#define BRIGHTNESS_VALUE 150
-#define BAUD_RATE 115200
-#define SEN5X_TEMP_OFFSET 0.0
-#define DPS368_OVERSAMPLING 7
-#define SHT4X_ADDRESS 0x44
-#define DPS368_ADDRESS 0x77
-
-// pin declaration
-#define SDA_PIN  21
-#define SCL_PIN  38
-#define BACKLIGHT_PIN 18
-
-// Define colors for UI
-#define BACKGROUND_COLOR TFT_BLACK
-#define TEXT_COLOR TFT_WHITE
-#define LABEL_COLOR TFT_WHITE
-#define TOP_BAR_COLOR TFT_DARKGREY
-#define MEASUREMENT_TEXT_COLOR TFT_CYAN
-#define ACCENT_COLOR TFT_CYAN
-// Define colors for value representation
-#define GOOD_COLOR TFT_GREEN
-#define MEDIOCRE_COLOR TFT_YELLOW
-#define BAD_COLOR TFT_ORANGE
-#define TERRIBLE_COLOR TFT_RED
-
-// struct TempThresholds
-// {
-//     bool delta = true;
-//     u_int8_t nominal = 21;
-//     u_int8_t good_delta = 3;
-//     u_int8_t mediocre_delta = 5;
-//     u_int8_t poor_delta = 7;
-//     u_int8_t verypoor_delta = 8;
-// };
-
-
-// uint16_t getColor(float value, Thresholds values){
-//     uint16_t color;
-//     if (values.delta) {
-
-//     }
-
-
-//     return color;
-// }
-
-
-// Creating sensor instances
-Dps3xx dps368 = Dps3xx();
-SensirionI2CScd4x scd4x = SensirionI2CScd4x();
-SensirionI2CSen5x sen5x = SensirionI2CSen5x();
-SensirionI2cSht4x sht4x = SensirionI2cSht4x();
+// Display variables - Define which values to display
+#define TEMPERATURE sen5xTemperature
+#define HUMIDITY sen5xHumidity
+#define CO2 scd4xCo2
+#define PRESSURE dps368Pressure
+#define VOC_INDEX sen5xVocIndex
+#define PM1 sen5xPm1
+#define PM2_5 sen5xPm2_5
+#define PM10 sen5xPm10
 
 // Variables for sensor measured values
 // SEN5x
@@ -97,20 +40,15 @@ float dps368Temperature = 0.0f;
 float sht4xTemperature = 0.0f;
 float sht4xHumidity = 0.0f;
 
+
+// Creating sensor instances
+Dps3xx dps368 = Dps3xx();
+SensirionI2CScd4x scd4x = SensirionI2CScd4x();
+SensirionI2CSen5x sen5x = SensirionI2CSen5x();
+SensirionI2cSht4x sht4x = SensirionI2cSht4x();
 // Creating display instances
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
-// Display variables - Define which values to display
-#define TEMPERATURE sen5xTemperature
-#define HUMIDITY sen5xHumidity
-#define CO2 scd4xCo2
-#define PRESSURE dps368Pressure
-#define VOC_INDEX sen5xVocIndex
-#define PM1 sen5xPm1
-#define PM2_5 sen5xPm2_5
-#define PM10 sen5xPm10
-
-
 
 
 // Function declarations
@@ -120,8 +58,7 @@ void drawClockAndWiFi();
 void updateUI();
 void drawUI();
 
-// Wi-Fi functions
-void connectToWiFi();
+
 
 // Sensor functions
 void printUint16Hex(uint16_t value);
@@ -142,7 +79,7 @@ void setup() {
     tft.fillScreen(BACKGROUND_COLOR);
 
     // Create a sprite for the display
-    sprite.createSprite(480, 320);
+    sprite.createSprite(TFT_WIDTH, TFT_HEIGHT);
 
     // Draw UI layout
     drawUI();
@@ -275,7 +212,7 @@ void loop() {
         Serial.print("Temperature: "); Serial.print(scd4xTemperature); Serial.println(" °C");
         Serial.print("Humidity: "); Serial.print(scd4xHumidity); Serial.println(" %");
     }
-sen5x.
+
     // SEN5x
     // Read and serial print SEN5x measurements
     Serial.println("-----------------------");
@@ -382,8 +319,8 @@ void drawUI() {
     sprite.setTextDatum(TL_DATUM); // Top-left
     sprite.setTextColor(TEXT_COLOR, BACKGROUND_COLOR);
     sprite.setTextSize(3);
-    sprite.drawString("SSID:", 20, 60); sprite.drawString(ssid, 120, 60);
-    sprite.drawString("PASS:", 20, 120); sprite.drawString(password, 120, 120);
+    sprite.drawString("SSID:", 20, 60); sprite.drawString(SECRET_SSID, 120, 60);
+    sprite.drawString("PASS:", 20, 120); sprite.drawString(SECRET_PASSWORD, 120, 120);
 
     sprite.pushSprite(0, 0);
 
