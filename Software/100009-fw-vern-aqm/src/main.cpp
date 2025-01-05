@@ -8,6 +8,7 @@
 
 #include "secrets.h" // Secret credentials
 #include "config.h"  // General configuration
+#include "server_functions.h"
 
 // Display variables - Define which values to display
 #define TEMPERATURE sen5xTemperature
@@ -40,6 +41,7 @@ float dps368Temperature = 0.0f;
 float sht4xTemperature = 0.0f;
 float sht4xHumidity = 0.0f;
 
+uint64_t timestamp = 0;
 
 // Creating sensor instances
 Dps3xx dps368 = Dps3xx();
@@ -73,23 +75,25 @@ void setup() {
     pinMode(BACKLIGHT_PIN, OUTPUT);
     analogWrite(BACKLIGHT_PIN, BRIGHTNESS_VALUE);
 
+    // Initialize serial communication
+    Serial.begin(BAUD_RATE);
+    while (!Serial) {
+        delay(100);
+    }
+    Serial.println("Booting...");
+
+    connectToWifi();
+    delay(500);
     // Initialize the display in landscape mode
     tft.init();
     tft.setRotation(3);
     tft.fillScreen(BACKGROUND_COLOR);
 
     // Create a sprite for the display
-    sprite.createSprite(TFT_WIDTH, TFT_HEIGHT);
+    sprite.createSprite(480, 320);
 
     // Draw UI layout
     drawUI();
-
-    // Initialize serial communication
-    Serial.begin(BAUD_RATE);
-    while (!Serial) {
-        delay(100);
-    }
-
     // Initialize I2C bus
     Wire.begin(SDA_PIN, SCL_PIN);
     scd4x.begin(Wire);
@@ -97,9 +101,7 @@ void setup() {
     dps368.begin(Wire, DPS368_ADDRESS);
     sht4x.begin(Wire, SHT4X_ADDRESS);
 
-
     delay(100);
-    Serial.println("Booting...");
 
     // SCD4x Initialization
     // Stop SCD4x potentially previously started measurement
@@ -117,7 +119,7 @@ void setup() {
     uint16_t sen5xError;
     char sen5xErrorMessage[256];
     sen5xError = sen5x.deviceReset();
-    if (sen5xError) {
+    if (sen5xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute sen5x.deviceReset(): ");
         errorToString(sen5xError, sen5xErrorMessage, 256);
         Serial.println(sen5xErrorMessage);
@@ -128,7 +130,7 @@ void setup() {
     uint16_t sht4xError;
     char sht4xErrorMessage[64];
     sht4xError = sht4x.softReset();
-    if (sht4xError) {
+    if (sht4xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute sht4x.softReset(): ");
         errorToString(sht4xError, sht4xErrorMessage, 64);
         Serial.println(sht4xErrorMessage);
@@ -136,20 +138,23 @@ void setup() {
 
     // Print sensor module information if I2C buffers are set 
     #ifdef USE_PRODUCT_INFO
+        if (DEBUG_SERIAL == 1) {
         printSHT4xSerialNumber();
         printSCD4xSerialNumber();
         printSEN5xModuleVersions();
         // Add ambient pressure sensor
+        }
     #endif
 
     #ifdef SEN5X_TEMP_OFFSET
         // Set temperature offset for SEN5x
         sen5xError = sen5x.setTemperatureOffsetSimple(SEN5X_TEMP_OFFSET);
-        if (sen5xError) {
+        if (sen5xError != 0 && DEBUG_SERIAL == 1) {
             Serial.print("Error trying to execute sen5x.setTemperatureOffsetSimple(): ");
             errorToString(sen5xError, sen5xErrorMessage, 256);
             Serial.println(sen5xErrorMessage);
-        } else {
+        } 
+        else if (sen5xError == 0 && DEBUG_SERIAL == 1) {
             Serial.print("SEN5x Temperature Offset set to ");
             Serial.print(SEN5X_TEMP_OFFSET);
             Serial.println(" °C (SEN54/SEN55 only)");
@@ -158,7 +163,7 @@ void setup() {
 
     // Start SCD4x measurement
     scd4xError = scd4x.startPeriodicMeasurement();
-    if (scd4xError) {
+    if (scd4xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute scd4x.startPeriodicMeasurement(): ");
         errorToString(scd4xError, scd4xErrorMessage, 256);
         Serial.println(scd4xErrorMessage);
@@ -166,7 +171,7 @@ void setup() {
 
     // Start SEN5x measurement
     sen5xError = sen5x.startMeasurement();
-    if (sen5xError) {
+    if (sen5xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute sen5x.startMeasurement(): ");
         errorToString(sen5xError, sen5xErrorMessage, 256);
         Serial.println(sen5xErrorMessage);
@@ -174,7 +179,10 @@ void setup() {
 
     // add external sensor initializations here
 
-    Serial.println("Waiting for first measurement... (5 sec)");
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("Booting process completed ");
+        Serial.println("Waiting for first measurement... (5 sec)");
+    }
 }
 
 // Main loop function - executes in loop after setup function is executed
@@ -187,7 +195,7 @@ void loop() {
     uint16_t scd4xError;
     char scd4xErrorMessage[256];
     scd4xError = scd4x.getDataReadyFlag(isDataReady);
-    if (scd4xError) {
+    if (scd4xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute scd4x.getDataReadyFlag(): ");
         errorToString(scd4xError, scd4xErrorMessage, 256);
         Serial.println(scd4xErrorMessage);
@@ -198,16 +206,19 @@ void loop() {
     }
 
     // Read and serial print SCD4x measurements
-    Serial.println("-----------------------");
-    Serial.println("SCD4x Measurements:");
+
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("-----------------------");
+        Serial.println("SCD4x Measurements:");
+    }
     scd4xError = scd4x.readMeasurement(scd4xCo2, scd4xTemperature, scd4xHumidity);
-    if (scd4xError) {
+    if (scd4xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute scd4x.readMeasurement(): ");
         errorToString(scd4xError, scd4xErrorMessage, 256);
         Serial.println(scd4xErrorMessage);
-    } else if (scd4xCo2 == 0) {
+    } else if (scd4xCo2 == 0 && DEBUG_SERIAL == 1) {
         Serial.println("SCD4x Invalid sample detected, skipping.");
-    } else {
+    } else if (scd4xError == 0 && DEBUG_SERIAL == 1){
         Serial.print("CO2: "); Serial.print(scd4xCo2); Serial.println(" ppm");
         Serial.print("Temperature: "); Serial.print(scd4xTemperature); Serial.println(" °C");
         Serial.print("Humidity: "); Serial.print(scd4xHumidity); Serial.println(" %");
@@ -215,8 +226,10 @@ void loop() {
 
     // SEN5x
     // Read and serial print SEN5x measurements
-    Serial.println("-----------------------");
-    Serial.println("SEN5x Measurements:");
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("-----------------------");
+        Serial.println("SEN5x Measurements:");
+    }
     uint16_t sen5xError;
     char sen5xErrorMessage[256];
 
@@ -230,11 +243,11 @@ void loop() {
         sen5xVocIndex,
         sen5xNoxIndex);
 
-    if (sen5xError) {
+    if (sen5xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute sen5x.readMeasuredValues(): ");
         errorToString(sen5xError, sen5xErrorMessage, 256);
         Serial.println(sen5xErrorMessage);
-    } else {
+    } else if (sen5xError == 0 && DEBUG_SERIAL == 1) {
         Serial.print("PM 1.0: "); Serial.print(sen5xPm1);   Serial.println(" µg/m³");
         Serial.print("PM 2.5: "); Serial.print(sen5xPm2_5); Serial.println(" µg/m³");
         Serial.print("PM 4.0: "); Serial.print(sen5xPm4);   Serial.println(" µg/m³");
@@ -271,44 +284,48 @@ void loop() {
 
     // DPS368
     // Read and serial print DPS368 measurements
-    Serial.println("-----------------------");
-    Serial.println("DPS368 Measurements:");
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("-----------------------");
+        Serial.println("DPS368 Measurements:");
+    }
 
     int16_t dps368Error;
     dps368Error = dps368.measureTempOnce(dps368Temperature, DPS368_OVERSAMPLING);
-    if (dps368Error) {
+    if (dps368Error != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute dps368.measureTempOnce(): "); 
         Serial.println(dps368Error);
-    } else {
+    } else if (dps368Error == 0 && DEBUG_SERIAL == 1) {
         Serial.print("Temperature: "); Serial.print(dps368Temperature); Serial.println(" °C");
     }
     
     dps368Error = dps368.measurePressureOnce(dps368Pressure, DPS368_OVERSAMPLING);
-    if (dps368Error) {
+    if (dps368Error != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute dps368.measurePressureOnce(): ");
         Serial.println(dps368Error);
-    } else {
+    } else if (dps368Error == 0 && DEBUG_SERIAL == 1) {
         Serial.print("Pressure: "); Serial.print(dps368Pressure); Serial.println(" Pa"); 
     }
 
     // SHT4x
     // Read and serial print SHT4x measurements
-    Serial.println("-----------------------");
-    Serial.println("SHT4x Measurements:");
-
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("-----------------------");
+        Serial.println("SHT4x Measurements:");
+    }
     int16_t sht4xError;
     char sht4xErrorMessage[64];
     sht4xError = sht4x.measureHighPrecision(sht4xTemperature, sht4xHumidity);
-    if (sht4xError) {
+    if (sht4xError != 0 && DEBUG_SERIAL == 1) {
         Serial.print("Error trying to execute sht4x.measureHighPrecision(): ");
         errorToString(sht4xError, sht4xErrorMessage, 64);
         Serial.println(sht4xErrorMessage);
-    } else {
+    } else if (sht4xError == 0 && DEBUG_SERIAL == 1) {
         Serial.print("Temperature: "); Serial.print(sht4xTemperature); Serial.println(" °C");
         Serial.print("Humidity: "); Serial.print(sht4xHumidity); Serial.println(" %");
+    } else if (sht4xError == 0) {
+        
     }
 
-    delay(100);
 }
 
 // Draw initial UI with Wi-Fi credentials

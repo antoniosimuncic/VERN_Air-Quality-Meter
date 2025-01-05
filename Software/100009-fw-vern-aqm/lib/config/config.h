@@ -13,6 +13,7 @@
 #define DPS368_ADDRESS 0x77
 #define WIFI_TIMEOUT 5000
 #define WIFI_RETRIES 3
+#define DEBUG_SERIAL 1
 
 // pin declaration
 #define SDA_PIN  21
