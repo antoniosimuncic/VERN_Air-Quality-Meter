@@ -29,7 +29,7 @@ uint16_t getHumidityColor(float humidity) {
         return TERRIBLE_COLOR;     // Red for temperatures under 35 or over 65°C
     }
 }
-
+ 
 uint16_t getPressureColor(float pressure) {
 
     uint16_t targetPressure = 1013;
@@ -48,66 +48,71 @@ uint16_t getCO2Color(uint16_t co2) {
 
     if (co2 < 700) {
         return GOOD_COLOR;
-    } else if (co2 >= 700) {
+    } else if (co2 >= 700 && co2 < 1200) {
         return MEDIOCRE_COLOR;
-    } else if (co2 >= 1200) {
+    } else if (co2 >= 1200 && co2 < 1500) {
         return BAD_COLOR;
-    } else if (co2 >= 1500){
+    } else {
         return TERRIBLE_COLOR;
     }
 }
+
 
 uint16_t getVOCColor(uint16_t voc) {
 
     if (voc < 100) {
         return GOOD_COLOR;
-    } else if (voc >= 100) {
+    } else if (voc >= 100 && voc < 200) {
         return MEDIOCRE_COLOR;
-    } else if (voc >= 200) {
+    } else if (voc >= 200 && voc < 300) {
         return BAD_COLOR;
-    } else if (voc >= 300){
+    } else {
         return TERRIBLE_COLOR;
     }
 }
+
 
 uint16_t getPM1Color(uint16_t pm1) {
 
     if (pm1 < 10) {
         return GOOD_COLOR;
-    } else if (pm1 >= 10) {
+    } else if (pm1 >= 10 && pm1 < 25) {
         return MEDIOCRE_COLOR;
-    } else if (pm1 >= 25) {
+    } else if (pm1 >= 25 && pm1 < 50) {
         return BAD_COLOR;
-    } else if (pm1 >= 50){
+    } else {
         return TERRIBLE_COLOR;
     }
 }
+
 
 uint16_t getPM2_5Color(uint16_t pm2_5) {
 
     if (pm2_5 < 12) {
         return GOOD_COLOR;
-    } else if (pm2_5 >= 12) {
+    } else if (pm2_5 >= 12 && pm2_5 < 35) {
         return MEDIOCRE_COLOR;
-    } else if (pm2_5 >= 35) {
+    } else if (pm2_5 >= 35 && pm2_5 < 55) {
         return BAD_COLOR;
-    } else if (pm2_5 >= 55){
+    } else {
         return TERRIBLE_COLOR;
     }
 }
+
 
 uint16_t getPM10Color(uint16_t pm10) {
-
+    
     if (pm10 < 20) {
         return GOOD_COLOR;
-    } else if (pm10 >= 20) {
+    } else if (pm10 >= 20 && pm10 < 50) {
         return MEDIOCRE_COLOR;
-    } else if (pm10 >= 50) {
+    } else if (pm10 >= 50 && pm10 < 100) {
         return BAD_COLOR;
-    } else if (pm10 >= 100){
+    } else {
         return TERRIBLE_COLOR;
     }
 }
+
 
 
 /*
