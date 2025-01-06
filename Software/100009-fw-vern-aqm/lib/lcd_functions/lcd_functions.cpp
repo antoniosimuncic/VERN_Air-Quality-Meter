@@ -1,8 +1,116 @@
 #include "lcd_functions.h"
 #include "config.h"
 
+// Value colors
+uint16_t getTempColor(float temperature) {
+
+    uint8_t targetTemp = 23;
+    if (abs(targetTemp-temperature) <= 1) {
+        return GOOD_COLOR;   // Green for temperatures 22-24°C
+    } else if (abs(targetTemp-temperature) <= 2) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 21-25°C
+    } else if (abs(targetTemp-temperature) <= 3) {
+        return BAD_COLOR;  // Orange for temperatures 20-26°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 20 or over 26°C
+    }
+}
+
+uint16_t getHumidityColor(float humidity) {
+
+    uint8_t targetHumidity = 50;
+    if (abs(targetHumidity-humidity) <= 5) {
+        return GOOD_COLOR;   // Green for temperatures 45-55°C
+    } else if (abs(targetHumidity-humidity) <= 10) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 40-60°C
+    } else if (abs(targetHumidity-humidity) <= 15) {
+        return BAD_COLOR;  // Orange for temperatures 35-65°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 35 or over 65°C
+    }
+}
+
+uint16_t getPressureColor(float pressure) {
+
+    uint16_t targetPressure = 1013;
+    if (abs(targetPressure-pressure) <= 5) {
+        return GOOD_COLOR;   // Green for temperatures 45-55°C
+    } else if (abs(targetPressure-pressure) <= 7) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 40-60°C
+    } else if (abs(targetPressure-pressure) <= 12) {
+        return BAD_COLOR;  // Orange for temperatures 35-65°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 35 or over 65°C
+    }
+}
+
+uint16_t getCO2Color(uint16_t co2) {
+
+    if (co2 < 700) {
+        return GOOD_COLOR;
+    } else if (co2 >= 700) {
+        return MEDIOCRE_COLOR;
+    } else if (co2 >= 1200) {
+        return BAD_COLOR;
+    } else if (co2 >= 1500){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getVOCColor(uint16_t voc) {
+
+    if (voc < 100) {
+        return GOOD_COLOR;
+    } else if (voc >= 100) {
+        return MEDIOCRE_COLOR;
+    } else if (voc >= 200) {
+        return BAD_COLOR;
+    } else if (voc >= 300){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM1Color(uint16_t pm1) {
+
+    if (pm1 < 10) {
+        return GOOD_COLOR;
+    } else if (pm1 >= 10) {
+        return MEDIOCRE_COLOR;
+    } else if (pm1 >= 25) {
+        return BAD_COLOR;
+    } else if (pm1 >= 50){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM2_5Color(uint16_t pm2_5) {
+
+    if (pm2_5 < 12) {
+        return GOOD_COLOR;
+    } else if (pm2_5 >= 12) {
+        return MEDIOCRE_COLOR;
+    } else if (pm2_5 >= 35) {
+        return BAD_COLOR;
+    } else if (pm2_5 >= 55){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM10Color(uint16_t pm10) {
+
+    if (pm10 < 20) {
+        return GOOD_COLOR;
+    } else if (pm10 >= 20) {
+        return MEDIOCRE_COLOR;
+    } else if (pm10 >= 50) {
+        return BAD_COLOR;
+    } else if (pm10 >= 100){
+        return TERRIBLE_COLOR;
+    }
+}
 
 
+/*
 // Draw initial UI with Wi-Fi credentials
 void drawUI() {
     sprite.fillSprite(BACKGROUND_COLOR);
@@ -86,3 +194,4 @@ void updateUI() {
 
     sprite.pushSprite(0, 0);
 }
+*/

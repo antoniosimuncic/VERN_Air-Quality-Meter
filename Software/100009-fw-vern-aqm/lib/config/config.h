@@ -5,7 +5,7 @@
 #include "secrets.h"
 
 // general configuration
-#define BRIGHTNESS_VALUE 50
+#define BRIGHTNESS_VALUE 40
 #define BAUD_RATE 115200
 #define SEN5X_TEMP_OFFSET -2.0
 #define DPS368_OVERSAMPLING 7
@@ -24,7 +24,7 @@
 #define BACKGROUND_COLOR TFT_BLACK
 #define TEXT_COLOR TFT_WHITE
 #define LABEL_COLOR TFT_WHITE
-#define TOP_BAR_COLOR TFT_DARKGREY
+#define TOP_BAR_COLOR  0x632c //0x39a6
 #define MEASUREMENT_TEXT_COLOR TFT_CYAN
 #define ACCENT_COLOR TFT_CYAN
 // Define colors for value representation

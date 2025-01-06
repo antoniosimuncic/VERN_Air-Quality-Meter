@@ -1,6 +1,8 @@
 #include "server_functions.h"
 #include "config.h"
 #include "secrets.h"
+
+
 /*
 String lineProtocolFormatter(char* measurement, const char* tags, const char* fields = "", uint64_t timestamp) {
     // Return newline if input is bad
@@ -63,4 +65,17 @@ void checkWifi(char* ssid, char* password) {
     delay(10);
 }
 
+String epochToHoursMinutes(unsigned long epochTime) {
+    // Calculate total seconds in a day
+    const unsigned long secondsInADay = 86400;
+    
+    // Calculate hours and minutes
+    unsigned long hours = (epochTime % secondsInADay) / 3600;
+    unsigned long minutes = (epochTime % 3600) / 60;
 
+    // Format hours and minutes into a string
+    String hoursStr = (hours < 10) ? "0" + String(hours) : String(hours);
+    String minutesStr = (minutes < 10) ? "0" + String(minutes) : String(minutes);
+    
+    return hoursStr + ":" + minutesStr; // Return formatted time
+}

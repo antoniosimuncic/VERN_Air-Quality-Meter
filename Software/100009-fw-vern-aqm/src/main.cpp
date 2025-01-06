@@ -1,11 +1,17 @@
 #include <Arduino.h>
 #include <Wire.h>
+
 #include <TFT_eSPI.h>
 #include <Dps3xx.h>
 #include <SensirionI2CScd4x.h>
 #include <SensirionI2CSen5x.h>
 #include <SensirionI2cSht4x.h>
 
+#include <WiFi.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
+
+// Custom code files
 #include "secrets.h" // Secret credentials
 #include "config.h"  // General configuration
 #include "server_functions.h"
@@ -51,6 +57,9 @@ SensirionI2cSht4x sht4x = SensirionI2cSht4x();
 // Creating display instances
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite sprite = TFT_eSprite(&tft);
+// Creating NTP instances
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 3601, 60000); // Update every minute, UTC+1 timezone
 
 
 // Function declarations
@@ -60,8 +69,6 @@ void drawClockAndWiFi();
 void updateUI();
 void drawUI();
 
-
-
 // Sensor functions
 void printUint16Hex(uint16_t value);
 void printSCD4xSerialNumber();
@@ -69,6 +76,16 @@ void printSEN5xSerialNumber();
 void printSEN5xModuleVersions();
 void printSHT4xSerialNumber();
 
+// Value colors
+uint16_t getTempColor(float temperature);
+uint16_t getHumidityColor(float humidity);
+uint16_t getPressureColor(float pressure);
+uint16_t getCO2Color(uint16_t co2);
+
+uint16_t getVOCColor(uint16_t voc);
+uint16_t getPM1Color(uint16_t pm1);
+uint16_t getPM2_5Color(uint16_t pm2_5);
+uint16_t getPM10Color(uint16_t pm10);
 
 // Setup function - executes once on power up
 void setup() {
@@ -83,7 +100,8 @@ void setup() {
     Serial.println("Booting...");
 
     connectToWifi();
-    delay(500);
+    timeClient.begin();
+
     // Initialize the display in landscape mode
     tft.init();
     tft.setRotation(3);
@@ -94,6 +112,7 @@ void setup() {
 
     // Draw UI layout
     drawUI();
+
     // Initialize I2C bus
     Wire.begin(SDA_PIN, SCL_PIN);
     scd4x.begin(Wire);
@@ -183,12 +202,15 @@ void setup() {
         Serial.println("Booting process completed ");
         Serial.println("Waiting for first measurement... (5 sec)");
     }
+
 }
 
 // Main loop function - executes in loop after setup function is executed
 void loop() {
+    timeClient.update();
     // Refresh UI
     updateUI();
+
     // SCD4x
     // Check if SCD4x is ready to send data
     bool isDataReady = false;
@@ -354,13 +376,16 @@ void drawUI() {
 // Draw clock and Wi-Fi indicator
 void drawClockAndWiFi() {
     // Draw clock
+    unsigned long currentEpoch = timeClient.getEpochTime();
+    String currentTime = epochToHoursMinutes(currentEpoch);
+
     sprite.setTextDatum(TC_DATUM); // Top-center
     sprite.setTextColor(TEXT_COLOR, TOP_BAR_COLOR);
     sprite.setTextSize(3);
-    sprite.drawString("18:32", 240, 8);
+    sprite.drawString(currentTime, 240, 8);
 
     // Draw WiFi symbol and indication - TODO
-    if (false) {
+    if (WiFi.status() == WL_CONNECTED) {
         sprite.fillCircle(455, 18, 7, TFT_GREEN); // Indicate WiFi connection (green dot)
     } else {
         sprite.fillCircle(455, 18, 7, TFT_RED); // Indicate NO WiFi connection (red dot)
@@ -394,24 +419,133 @@ void drawWidget(int x, int y, int w, int h, const char* label, const char* unit,
 // Update each widget with new sensor values
 void updateUI() {
     uint8_t x = 3;
-    uint8_t y = 60;
+    uint8_t y = 55;
     uint8_t w = 110;
     uint8_t h = 110;
     uint8_t v_space = 25;
 
-    drawWidget(x +   0, y, w, h, "Temp",     "C",   String(TEMPERATURE, 1).c_str(),  GOOD_COLOR);
-    drawWidget(x + 120, y, w, h, "RH",       "%",   String(HUMIDITY, 1).c_str(),     MEDIOCRE_COLOR);
-    drawWidget(x + 240, y, w, h, "CO2",      "ppm", String(CO2).c_str(),             BAD_COLOR);
-    drawWidget(x + 360, y, w, h, "Pressure", "hPa", String(PRESSURE/100, 2).c_str(), TERRIBLE_COLOR);
+    drawWidget(x +   0, y, w, h, "Temp",     "C",   String(TEMPERATURE, 1).c_str(),  getTempColor(TEMPERATURE));
+    drawWidget(x + 120, y, w, h, "RH",       "%",   String(HUMIDITY, 1).c_str(),     getHumidityColor(HUMIDITY));
+    drawWidget(x + 240, y, w, h, "CO2",      "ppm", String(CO2).c_str(),             getCO2Color(CO2));
+    drawWidget(x + 360, y, w, h, "Pressure", "hPa", String(PRESSURE/100, 2).c_str(), getPressureColor(PRESSURE));
 
-    drawWidget(x +   0, y + h + v_space, w, h, "VOC",   "Index", String(VOC_INDEX, 0).c_str(), TERRIBLE_COLOR);
-    drawWidget(x + 120, y + h + v_space, w, h, "PM1",   "ug/m3", String(PM1, 0).c_str(),       BAD_COLOR);
-    drawWidget(x + 240, y + h + v_space, w, h, "PM2.5", "ug/m3", String(PM2_5, 0).c_str(),     MEDIOCRE_COLOR);
-    drawWidget(x + 360, y + h + v_space, w, h, "PM10",  "ug/m3", String(PM10, 0).c_str(),      GOOD_COLOR);
+    drawWidget(x +   0, y + h + v_space, w, h, "VOC",   "Index", String(VOC_INDEX, 0).c_str(), getVOCColor(VOC_INDEX));
+    drawWidget(x + 120, y + h + v_space, w, h, "PM1",   "ug/m3", String(PM1, 0).c_str(),       getPM1Color(PM1));
+    drawWidget(x + 240, y + h + v_space, w, h, "PM2.5", "ug/m3", String(PM2_5, 0).c_str(),     getPM2_5Color(PM2_5));
+    drawWidget(x + 360, y + h + v_space, w, h, "PM10",  "ug/m3", String(PM10, 0).c_str(),      getPM10Color(PM10));
+
+    drawClockAndWiFi();
 
     sprite.pushSprite(0, 0);
 }
 
+// Value colors
+uint16_t getTempColor(float temperature) {
+
+    uint8_t targetTemp = 23;
+    if (abs(targetTemp-temperature) <= 1) {
+        return GOOD_COLOR;   // Green for temperatures 22-24°C
+    } else if (abs(targetTemp-temperature) <= 2) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 21-25°C
+    } else if (abs(targetTemp-temperature) <= 3) {
+        return BAD_COLOR;  // Orange for temperatures 20-26°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 20 or over 26°C
+    }
+}
+
+uint16_t getHumidityColor(float humidity) {
+
+    uint8_t targetHumidity = 50;
+    if (abs(targetHumidity-humidity) <= 5) {
+        return GOOD_COLOR;   // Green for temperatures 45-55°C
+    } else if (abs(targetHumidity-humidity) <= 10) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 40-60°C
+    } else if (abs(targetHumidity-humidity) <= 15) {
+        return BAD_COLOR;  // Orange for temperatures 35-65°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 35 or over 65°C
+    }
+}
+
+uint16_t getPressureColor(float pressure) {
+
+    uint16_t targetPressure = 1013;
+    if (abs(targetPressure-pressure) <= 5) {
+        return GOOD_COLOR;   // Green for temperatures 45-55°C
+    } else if (abs(targetPressure-pressure) <= 7) {
+        return MEDIOCRE_COLOR;  // Yellow for temperatures 40-60°C
+    } else if (abs(targetPressure-pressure) <= 12) {
+        return BAD_COLOR;  // Orange for temperatures 35-65°C
+    } else {
+        return TERRIBLE_COLOR;     // Red for temperatures under 35 or over 65°C
+    }
+}
+
+uint16_t getCO2Color(uint16_t co2) {
+
+    if (co2 < 700) {
+        return GOOD_COLOR;
+    } else if (co2 >= 700) {
+        return MEDIOCRE_COLOR;
+    } else if (co2 >= 1200) {
+        return BAD_COLOR;
+    } else if (co2 >= 1500){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getVOCColor(uint16_t voc) {
+
+    if (voc < 100) {
+        return GOOD_COLOR;
+    } else if (voc >= 100) {
+        return MEDIOCRE_COLOR;
+    } else if (voc >= 200) {
+        return BAD_COLOR;
+    } else if (voc >= 300){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM1Color(uint16_t pm1) {
+
+    if (pm1 < 10) {
+        return GOOD_COLOR;
+    } else if (pm1 >= 10) {
+        return MEDIOCRE_COLOR;
+    } else if (pm1 >= 25) {
+        return BAD_COLOR;
+    } else if (pm1 >= 50){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM2_5Color(uint16_t pm2_5) {
+
+    if (pm2_5 < 12) {
+        return GOOD_COLOR;
+    } else if (pm2_5 >= 12) {
+        return MEDIOCRE_COLOR;
+    } else if (pm2_5 >= 35) {
+        return BAD_COLOR;
+    } else if (pm2_5 >= 55){
+        return TERRIBLE_COLOR;
+    }
+}
+
+uint16_t getPM10Color(uint16_t pm10) {
+
+    if (pm10 < 20) {
+        return GOOD_COLOR;
+    } else if (pm10 >= 20) {
+        return MEDIOCRE_COLOR;
+    } else if (pm10 >= 50) {
+        return BAD_COLOR;
+    } else if (pm10 >= 100){
+        return TERRIBLE_COLOR;
+    }
+}
 
 // Sensor function definition
 // Serial print a 16-bit unsigned integer in 4 digit HEX format by adding leading zeros
