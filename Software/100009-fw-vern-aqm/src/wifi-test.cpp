@@ -181,3 +181,116 @@ void updateUI() {
 
     sprite.pushSprite(0, 0);
 }
+
+/*************************************************************************************/
+
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+// Wi-Fi credentials
+const char* ssid = "your_wifi_ssid";
+const char* password = "your_wifi_password";
+
+// Server endpoint
+const char* serverUrl = "https://iot.simuncic.com/sensor-readings";
+
+void setup() {
+  Serial.begin(115200);
+
+  // Connect to Wi-Fi
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to Wi-Fi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print(".");
+  }
+  Serial.println("\nConnected to Wi-Fi");
+
+  // Prepare JSON data
+  String jsonData = R"({
+    "mac_address": "00:A:7D:EA:91:89",
+    "temperature": 22.5,
+    "humidity": 45.0,
+    "pm1": 10,
+    "pm2_5": 20,
+    "pm4": 25,
+    "pm10": 30,
+    "co2": 450,
+    "voc": 100,
+    "pressure": 1013.25
+  })";
+
+  // Send POST request
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+    // Begin the HTTP request
+    http.begin(serverUrl);
+    http.addHeader("Content-Type", "application/json");
+
+    // Send POST request
+    int httpResponseCode = http.POST(jsonData);
+
+    // Check the HTTP response
+    if (httpResponseCode > 0) {
+      String response = http.getString(); // Get the response payload
+      Serial.println("Response code: " + String(httpResponseCode));
+      Serial.println("Response: " + response);
+    } else {
+      Serial.println("Error on sending POST: " + String(httpResponseCode));
+    }
+
+    // End HTTP connection
+    http.end();
+  } else {
+    Serial.println("Wi-Fi not connected");
+  }
+}
+
+void loop() {
+  // Nothing to do in loop
+}
+
+
+String macAddress = "00:A:7D:EA:91:89";
+float temperature = 22.5;
+float humidity = 45.0;
+
+String jsonData = "{";
+jsonData += "\"mac_address\":\"" + macAddress + "\",";
+jsonData += "\"temperature\":" + String(temperature) + ",";
+jsonData += "\"humidity\":" + String(humidity);
+jsonData += "}";
+
+
+
+
+
+
+/******************************************************/
+#include <ArduinoJson.h>
+
+// Create a JSON object
+StaticJsonDocument<200> jsonDoc;
+
+void setup() {
+  Serial.begin(115200);
+
+  // Add key-value pairs
+  jsonDoc["mac_address"] = "00:A:7D:EA:91:89";
+  jsonDoc["temperature"] = 22.5;
+  jsonDoc["humidity"] = 45.0;
+
+  // Serialize JSON to string
+  String jsonData;
+  serializeJson(jsonDoc, jsonData);
+
+  // Print JSON string
+  Serial.println(jsonData);
+
+  // Now you can send `jsonData` with the HTTP POST request
+}
+
+void loop() {
+  // Do nothing
+}

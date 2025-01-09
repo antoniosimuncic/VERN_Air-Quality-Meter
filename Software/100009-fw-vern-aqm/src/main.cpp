@@ -10,6 +10,7 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 #include <NTPClient.h>
+#include <HTTPClient.h>
 
 // Custom code files
 #include "secrets.h" // Secret credentials
@@ -25,6 +26,7 @@
 #define VOC_INDEX sen5xVocIndex
 #define PM1 sen5xPm1
 #define PM2_5 sen5xPm2_5
+#define PM4 sen5xPm4
 #define PM10 sen5xPm10
 
 // Variables for sensor measured values
@@ -61,7 +63,10 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 // Creating NTP instances
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 3601, 60000); // Update every minute, UTC+1 timezone
+
+String jsonData;
 String ipString;
+String macString;
 
 // Function declarations
 // Display functions
@@ -90,12 +95,6 @@ void setup() {
     }
     Serial.println("Booting...");
 
-    connectToWifi();
-    IPAddress ip = WiFi.localIP();
-    ipString = ip.toString();
-
-    timeClient.begin();
-
     // Initialize the display in landscape mode
     tft.init();
     tft.setRotation(3);
@@ -105,6 +104,16 @@ void setup() {
     sprite.createSprite(480, 320);
 
     // Draw UI layout
+    drawUI();
+
+    // Initialize WiFi and NTP client
+    connectToWifi();
+    timeClient.begin();
+    IPAddress ip = WiFi.localIP();
+    macString = WiFi.macAddress();
+    ipString = ip.toString();
+
+    // Draw UI again for the IP address
     drawUI();
 
     // Initialize I2C bus
@@ -204,6 +213,9 @@ void loop() {
     timeClient.update();
     // Refresh UI
     updateUI();
+
+    // Reset JSON payload
+    jsonData = "";
 
     // SCD4x
     // Check if SCD4x is ready to send data
@@ -342,6 +354,55 @@ void loop() {
         
     }
 
+    // JSON data insert
+    jsonData = "{";
+    jsonData += "\"mac_address\":\"" + macString + "\",";
+    jsonData += "\"temperature\":" + String(TEMPERATURE) + ",";
+    jsonData += "\"humidity\":" + String(HUMIDITY) + ",";
+    jsonData += "\"pm1\":" + String(PM1) + ",";
+    jsonData += "\"pm2_5\":" + String(PM2_5) + ",";
+    jsonData += "\"pm4\":" + String(PM4) + ",";
+    jsonData += "\"pm10\":" + String(PM10) + ",";
+    jsonData += "\"co2\":" + String(CO2) + ",";
+    jsonData += "\"voc\":" + String(VOC_INDEX) + ",";
+    jsonData += "\"pressure\":" + String(PRESSURE);
+    jsonData += "}";
+
+    // HTTP POST request
+    if (DEBUG_SERIAL == 1) {
+        Serial.println("-----------------------");
+        Serial.println("HTTP POST request:");
+    }
+    if (WiFi.status() == WL_CONNECTED) {
+        // Create HTTP instance
+        HTTPClient http;
+
+        // Begin the HTTP request
+        http.begin(SERVER_URL);
+        http.addHeader("Content-Type", "application/json");
+
+        // Send POST request
+        int httpResponseCode = http.POST(jsonData);
+
+        // Check the HTTP response
+        if (DEBUG_SERIAL == 1) {
+            Serial.println(jsonData);
+            if (httpResponseCode > 0) {
+                String response = http.getString(); // Get the response payload
+                Serial.println("Response code: " + String(httpResponseCode));
+                Serial.println("Response: " + response);
+            } else {
+                Serial.println("Error on sending POST: " + String(httpResponseCode));
+            }
+        }
+        // End HTTP connection
+        http.end();
+    } else {
+        if (DEBUG_SERIAL == 1) {
+            Serial.println("Wi-Fi not connected");
+        }
+    }
+
 }
 
 // Draw initial UI with Wi-Fi credentials
@@ -349,6 +410,11 @@ void drawUI() {
     sprite.fillSprite(BACKGROUND_COLOR);
 
     drawClockAndWiFi();
+
+    sprite.setTextDatum(TL_DATUM); // Top-left
+    sprite.setTextColor(TEXT_COLOR, TOP_BAR_COLOR);
+    sprite.setTextSize(3);
+    sprite.drawString("Time Zone", 10, 8);
 
     sprite.setTextDatum(TL_DATUM); // Top-left
     sprite.setTextColor(TEXT_COLOR, BACKGROUND_COLOR);
@@ -433,8 +499,6 @@ void updateUI() {
 
     sprite.pushSprite(0, 0);
 }
-
-
 
 // Sensor function definition
 // Serial print a 16-bit unsigned integer in 4 digit HEX format by adding leading zeros

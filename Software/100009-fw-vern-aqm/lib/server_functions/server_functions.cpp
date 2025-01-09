@@ -38,7 +38,6 @@ void connectToWifi() {
         WiFi.mode(WIFI_STA);
         WiFi.begin(SECRET_SSID, SECRET_PASSWORD);
         unsigned long startAttemptTime = millis();
-        Serial.println(xPortGetCoreID());
         // Try to connect without blocking
         while (WiFi.status() != WL_CONNECTED && millis() - startAttemptTime < WIFI_TIMEOUT) {
             delay(10);
