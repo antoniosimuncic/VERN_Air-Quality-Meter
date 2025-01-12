@@ -13,5 +13,6 @@ void connectToWifi();
 void checkWifi();
 String epochToHoursMinutes(unsigned long epochTime);
 
+void sendDataToHTTPServer(String mac_address, float temperature, float humidity, float pm1, float pm2_5, float pm4, float pm10, uint16_t co2, float voc, float pressure);
 
 #endif

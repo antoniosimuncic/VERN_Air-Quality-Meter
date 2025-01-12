@@ -64,7 +64,6 @@ TFT_eSprite sprite = TFT_eSprite(&tft);
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 3601, 60000); // Update every minute, UTC+1 timezone
 
-String jsonData;
 String ipString;
 String macString;
 
@@ -190,6 +189,8 @@ void setup() {
         errorToString(scd4xError, scd4xErrorMessage, 256);
         Serial.println(scd4xErrorMessage);
     }
+    sen5xError = sen5x.getFanAutoCleaningInterval()
+    sen5xError = sen5x.setFanAutoCleaningInterval()
 
     // Start SEN5x measurement
     sen5xError = sen5x.startMeasurement();
@@ -214,9 +215,6 @@ void loop() {
     // Refresh UI
     updateUI();
 
-    // Reset JSON payload
-    jsonData = "";
-
     // SCD4x
     // Check if SCD4x is ready to send data
     bool isDataReady = false;
@@ -232,7 +230,6 @@ void loop() {
     if (!isDataReady) {
         return;
     }
-
     // Read and serial print SCD4x measurements
 
     if (DEBUG_SERIAL == 1) {
@@ -354,56 +351,10 @@ void loop() {
         
     }
 
-    // JSON data insert
-    jsonData = "{";
-    jsonData += "\"mac_address\":\"" + macString + "\",";
-    jsonData += "\"temperature\":" + String(TEMPERATURE) + ",";
-    jsonData += "\"humidity\":" + String(HUMIDITY) + ",";
-    jsonData += "\"pm1\":" + String(PM1) + ",";
-    jsonData += "\"pm2_5\":" + String(PM2_5) + ",";
-    jsonData += "\"pm4\":" + String(PM4) + ",";
-    jsonData += "\"pm10\":" + String(PM10) + ",";
-    jsonData += "\"co2\":" + String(CO2) + ",";
-    jsonData += "\"voc\":" + String(VOC_INDEX) + ",";
-    jsonData += "\"pressure\":" + String(PRESSURE);
-    jsonData += "}";
-
-    // HTTP POST request
-    if (DEBUG_SERIAL == 1) {
-        Serial.println("-----------------------");
-        Serial.println("HTTP POST request:");
-    }
-    if (WiFi.status() == WL_CONNECTED) {
-        // Create HTTP instance
-        HTTPClient http;
-
-        // Begin the HTTP request
-        http.begin(SERVER_URL);
-        http.addHeader("Content-Type", "application/json");
-
-        // Send POST request
-        int httpResponseCode = http.POST(jsonData);
-
-        // Check the HTTP response
-        if (DEBUG_SERIAL == 1) {
-            Serial.println(jsonData);
-            if (httpResponseCode > 0) {
-                String response = http.getString(); // Get the response payload
-                Serial.println("Response code: " + String(httpResponseCode));
-                Serial.println("Response: " + response);
-            } else {
-                Serial.println("Error on sending POST: " + String(httpResponseCode));
-            }
-        }
-        // End HTTP connection
-        http.end();
-    } else {
-        if (DEBUG_SERIAL == 1) {
-            Serial.println("Wi-Fi not connected");
-        }
-    }
+    sendDataToHTTPServer(macString, TEMPERATURE, HUMIDITY, PM1, PM2_5, PM4, PM10, CO2, VOC_INDEX, PRESSURE);
 
 }
+
 
 // Draw initial UI with Wi-Fi credentials
 void drawUI() {
