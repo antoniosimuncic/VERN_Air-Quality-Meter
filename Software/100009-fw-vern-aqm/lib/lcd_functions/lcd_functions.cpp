@@ -32,7 +32,7 @@ uint16_t getHumidityColor(float humidity) {
  
 uint16_t getPressureColor(float pressure) {
 
-    uint16_t targetPressure = 1013;
+    uint16_t targetPressure = 101325;
     if (abs(targetPressure-pressure) <= 5) {
         return GOOD_COLOR;   // Green for pressure 1008-1018hPa
     } else if (abs(targetPressure-pressure) <= 7) {

@@ -176,7 +176,7 @@ void setup() {
             Serial.println(sen5xErrorMessage);
         } 
         else if (sen5xError == 0 && DEBUG_SERIAL == 1) {
-            Serial.print("SEN5x Temperature Offset set to ");
+            Serial.print("SEN5x Temperature Offset set to: ");
             Serial.print(SEN5X_TEMP_OFFSET);
             Serial.println(" °C (SEN54/SEN55 only)");
         }
@@ -189,8 +189,24 @@ void setup() {
         errorToString(scd4xError, scd4xErrorMessage, 256);
         Serial.println(scd4xErrorMessage);
     }
-    sen5xError = sen5x.getFanAutoCleaningInterval()
-    sen5xError = sen5x.setFanAutoCleaningInterval()
+    
+    // Set SEN5x Auto Cleaning Interval
+    sen5xError = sen5x.setFanAutoCleaningInterval(SEN5X_CLEANING_INTERVAL);
+    if (sen5xError) {
+        errorToString(sen5xError, sen5xErrorMessage, 256);
+            Serial.println(sen5xErrorMessage);
+    }
+
+    // Serial print SEN5x Auto Cleaning Interval
+    uint32_t interval;
+    sen5xError = sen5x.getFanAutoCleaningInterval(interval);
+    if (sen5xError != 0 && DEBUG_SERIAL == 1) {
+        Serial.print("Error trying to execute sen5x.getFanAutoCleaningInterval(): ");
+        errorToString(sen5xError, sen5xErrorMessage, 256);
+        Serial.println(sen5xErrorMessage);
+    } else {
+        Serial.print("SEN5x Auto Cleaning Interval set to: "); Serial.print(interval); Serial.println(" sec");
+    }
 
     // Start SEN5x measurement
     sen5xError = sen5x.startMeasurement();
@@ -200,7 +216,9 @@ void setup() {
         Serial.println(sen5xErrorMessage);
     }
 
-    // add external sensor initializations here
+    /*##############################################
+    ##  add external sensor initializations here  ##
+    ##############################################*/
 
     if (DEBUG_SERIAL == 1) {
         Serial.println("Booting process completed ");
