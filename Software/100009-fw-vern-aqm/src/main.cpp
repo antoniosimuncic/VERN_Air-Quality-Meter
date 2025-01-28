@@ -394,8 +394,6 @@ void drawUI() {
 
     sprite.pushSprite(0, 0);
 
-    delay(3000);
-
     sprite.fillRect(0,35,480,285, BACKGROUND_COLOR);
 
     sprite.pushSprite(0, 0);

@@ -4,33 +4,6 @@
 #include "HTTPClient.h"
 
 
-/*
-String lineProtocolFormatter(char* measurement, const char* tags, const char* fields = "", uint64_t timestamp) {
-    // Return newline if input is bad
-    if (measurement == nullptr || strlen(measurement) == 0) {
-        return ""; 
-    } else {
-        // Append measurement if provided
-        String lineProtocolMessage =  String(measurement);
-        // Append tags if provided
-        if (tags != nullptr && strlen(tags) > 0) {
-            lineProtocolMessage += ",";
-            lineProtocolMessage += tags;
-        }
-        // Append fields
-        lineProtocolMessage += " ";
-        lineProtocolMessage += fields;
-        // Append timestamp if valid
-        if (timestamp > 0) {
-            lineProtocolMessage += " ";
-            lineProtocolMessage += String(timestamp);
-        }
-
-        return lineProtocolMessage;
-    }
-}
-*/
-
 // Wi-Fi functions
 void connectToWifi() {
     uint8_t attempt = 0;
@@ -127,3 +100,30 @@ void sendDataToHTTPServer(String mac_address, float temperature, float humidity,
         }
     }
 }
+
+/*
+String lineProtocolFormatter(char* measurement, const char* tags, const char* fields = "", uint64_t timestamp) {
+    // Return newline if input is bad
+    if (measurement == nullptr || strlen(measurement) == 0) {
+        return ""; 
+    } else {
+        // Append measurement if provided
+        String lineProtocolMessage =  String(measurement);
+        // Append tags if provided
+        if (tags != nullptr && strlen(tags) > 0) {
+            lineProtocolMessage += ",";
+            lineProtocolMessage += tags;
+        }
+        // Append fields
+        lineProtocolMessage += " ";
+        lineProtocolMessage += fields;
+        // Append timestamp if valid
+        if (timestamp > 0) {
+            lineProtocolMessage += " ";
+            lineProtocolMessage += String(timestamp);
+        }
+
+        return lineProtocolMessage;
+    }
+}
+*/
