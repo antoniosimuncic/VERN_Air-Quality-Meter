@@ -308,6 +308,7 @@ View Full Code: [main.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-M
 # Week 11 and 12: Node.js Server with visual data dashboard
 
 Last part of the project was to design a web-application for managing the sensors and viewing and storing the data.  
+
 **Web-App Repository**: [Nodejs-IoT-Server](https://github.com/antoniosimuncic/nodejs-iot-server)  
 
 ![IoT Sensor Dashboard](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Documentation/dashboard-screenshot.png)  
