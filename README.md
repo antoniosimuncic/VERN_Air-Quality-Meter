@@ -173,7 +173,7 @@ void sendDataToHTTPServer(String mac_address, float temperature, float humidity,
     }
 }
 ```
-View Full Code: [server_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/server_functions/server_functions.cpp)
+**View Full Code:** [server_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/server_functions/server_functions.cpp)
 
 # Week 10: LCD Integration and Sensor Visualization
 
@@ -200,7 +200,7 @@ uint16_t getHumidityColor(float humidity) {
     }
 }
 ```
-View Full Code: [server_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/lcd_functions/lcd_functions.cpp)
+**View Full Code:** [server_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/lcd_functions/lcd_functions.cpp)
 
 ### Sensor Value Visualization
 
@@ -303,7 +303,7 @@ void drawClockAndWiFi() {
     }
 }
 ```
-View Full Code: [main.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/src/main.cpp)
+**View Full Code:** [main.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/src/main.cpp)
 
 # Week 11 and 12: Node.js Server with visual data dashboard
 
