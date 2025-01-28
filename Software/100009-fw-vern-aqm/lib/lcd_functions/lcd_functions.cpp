@@ -6,13 +6,13 @@ uint16_t getTempColor(float temperature) {
 
     uint8_t targetTemp = 23;
     if (abs(targetTemp-temperature) <= 2) {
-        return GOOD_COLOR;   // Green for temperatures 21-25°C
+        return GOOD_COLOR;  // Green for temperatures 21-25°C
     } else if (abs(targetTemp-temperature) <= 3) {
         return MEDIOCRE_COLOR;  // Yellow for temperatures 20-26°C
     } else if (abs(targetTemp-temperature) <= 4) {
         return BAD_COLOR;  // Orange for temperatures 19-27°C
     } else {
-        return TERRIBLE_COLOR;     // Red for temperatures under 19 or over 27°C
+        return TERRIBLE_COLOR;  // Red for temperatures under 19 or over 27°C
     }
 }
 
@@ -20,27 +20,27 @@ uint16_t getHumidityColor(float humidity) {
 
     uint8_t targetHumidity = 50;
     if (abs(targetHumidity-humidity) <= 10) {
-        return GOOD_COLOR;   // Green for humidity 40-60%
+        return GOOD_COLOR;  // Green for humidity 40-60%
     } else if (abs(targetHumidity-humidity) <= 15) {
         return MEDIOCRE_COLOR;  // Yellow for humidity 35-65%
     } else if (abs(targetHumidity-humidity) <= 20) {
         return BAD_COLOR;  // Orange for humidity 30-70%
     } else {
-        return TERRIBLE_COLOR;     // Red for humidity under 30 or over 70%
+        return TERRIBLE_COLOR;  // Red for humidity under 30 or over 70%
     }
 }
  
 uint16_t getPressureColor(float pressure) {
-
-    uint16_t targetPressure = 101325;
-    if (abs(targetPressure-pressure) <= 5) {
-        return GOOD_COLOR;   // Green for pressure 1008-1018hPa
-    } else if (abs(targetPressure-pressure) <= 7) {
+    
+    uint32_t targetPressure = 101325;
+    if (abs(targetPressure-pressure) <= 500) {
+        return GOOD_COLOR;  // Green for pressure 1008-1018hPa
+    } else if (abs(targetPressure-pressure) <= 700) {
         return MEDIOCRE_COLOR;  // Yellow for pressure 1006-1020hPa
-    } else if (abs(targetPressure-pressure) <= 12) {
-        return BAD_COLOR;  // Orange for pressure 1001-1025hPa
+    } else if (abs(targetPressure-pressure) <= 1200) {
+        return BAD_COLOR; // Orange for pressure 1001-1025hPa
     } else {
-        return TERRIBLE_COLOR;     // Red for pressure under 1001 or over 1025hPa
+        return TERRIBLE_COLOR;  // Red for pressure under 1001 or over 1025hPa
     }
 }
 

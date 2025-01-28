@@ -1,6 +1,6 @@
 # VERN' University  
 Internet of Things Department  
-Professor: doc. dr. sc. Petar Kolar  
+Professor: doc. dr. sc. Petar Kolar, Roman Rubčić, dipl. ing. graf. teh.  
 Student: Antonio Šimunčić  
 
 **Smart air quality monitor**  
