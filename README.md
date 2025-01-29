@@ -92,7 +92,7 @@ In week 9, the focus was on developing and refining the firmware responsible for
 
 The firmware establishes a Wi-Fi connection using the ESP32-S3 microcontroller. A robust retry mechanism was implemented to handle connection failures.
 
-Code Snippet:
+**Code Snippet**:
 ```c
 void connectToWifi() {
     uint8_t attempt = 0;
@@ -123,7 +123,7 @@ void connectToWifi() {
 
 Data collected from sensors is sent to an HTTP server in JSON format. The sendDataToHTTPServer function handles this process, including constructing the JSON payload and managing HTTP requests.
 
-- Request body:
+**Request body:**
 ```json
 {
  "mac_address": "AA:BB:CC:DD:EE:FF",
@@ -139,7 +139,7 @@ Data collected from sensors is sent to an HTTP server in JSON format. The sendDa
 }
 ```
      
-Code Snippet:
+**Code Snippet:**
 ```c
 void sendDataToHTTPServer(String mac_address, float temperature, float humidity, float pm1, float pm2_5, float pm4, float pm10, uint16_t co2, float voc, float pressure) {
     String jsonData = "{";
@@ -184,7 +184,7 @@ In week 10, the focus shifted to integrating the TFT display for visualizing sen
 Each sensor value is displayed in a color-coded format to indicate its status (e.g., good, mediocre, bad, terrible).  
 Functions like `getTempColor()` and `getHumidityColor()` determine the appropriate color for each value.
 
-Code Snippet:
+**Code Snippet:**
 ```c
 uint16_t getHumidityColor(float humidity) {
 
@@ -200,13 +200,13 @@ uint16_t getHumidityColor(float humidity) {
     }
 }
 ```
-**View Full Code:** [server_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/lcd_functions/lcd_functions.cpp)
+**View Full Code:** [lcd_functions.cpp](https://github.com/antoniosimuncic/VERN_Air-Quality-Meter/blob/main/Software/100009-fw-vern-aqm/lib/lcd_functions/lcd_functions.cpp)
 
 ### Sensor Value Visualization
 
 The display shows sensor values for temperature, humidity, CO2, VOC Index, and particulate matter (PM1, PM2.5, PM10). Each value is updated dynamically and rendered in real time.
 
-Code Snippet:
+**Code Snippet:**
 ```c
 // Draw initial UI with Wi-Fi credentials
 void drawUI() {
