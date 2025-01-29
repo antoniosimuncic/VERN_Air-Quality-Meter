@@ -295,7 +295,7 @@ void drawClockAndWiFi() {
     sprite.setTextSize(3);
     sprite.drawString(currentTime, 240, 8);
 
-    // Draw WiFi symbol and indication - TODO
+    // Draw WiFi symbol and indication
     if (WiFi.status() == WL_CONNECTED) {
         sprite.fillCircle(455, 18, 7, TFT_GREEN); // Indicate WiFi connection (green dot)
     } else {
